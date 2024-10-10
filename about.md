@@ -1,7 +1,5 @@
 ---
 permalink: /about/
 ---
-this is a website where i
-post stuff for my respository
-  https://github.com/azwqxr/azwqxrbatchfiles
-so uhh yea thats it
+# site built and coded by azwqxr :)
+this is a site where I post stuff like by batch creations
