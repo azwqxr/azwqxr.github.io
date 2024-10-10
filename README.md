@@ -4,6 +4,3 @@ Website version of the azwqxrbatchfiles repository
 the full website will be released soon
 # sneak peek of another part of the website
   https://azwqxr.github.io/about.html
----
-ahh: /aeae.html
----
