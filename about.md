@@ -1,3 +1,6 @@
+---
+permalink: /about/
+---
 this is a website where i
 post stuff for my respository
   https://github.com/azwqxr/azwqxrbatchfiles
