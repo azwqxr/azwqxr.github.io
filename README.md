@@ -1,3 +1,6 @@
+---
+permalink: /home/
+---
 # azwqxr.github.io
 Website version of the azwqxrbatchfiles repository
 # this is a TEST
