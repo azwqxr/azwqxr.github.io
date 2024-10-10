@@ -20,7 +20,7 @@
         id: deployment
         uses: actions/deploy-pages@v1
 
-        jobs:
+  jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
