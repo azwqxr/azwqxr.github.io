@@ -5,4 +5,3 @@ the full website will be released soon
 # Main Menu
   [about](https://azwqxr.github.io/about/)
   [batch files about](https://azwqxr.github.io/batchfiles/about/)
-why is this not loading in the site
