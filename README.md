@@ -1,8 +1,8 @@
 # azwqxr.github.io
 where i post my stuff like YT
 > # this is a TEST
-> the full website will be released soon
-> <strong>EXPECT BUGS!!!!!</strong></em>
+> <p>the full website will be released soon<br>
+> <strong>EXPECT BUGS!!!!!</strong></em></p>
 # Main Menu
 ## [about this site](https://azwqxr.github.io/about/)
 ## [azwqxrbatchfiles](https://azwqxr.github.io/batchfiles/)
