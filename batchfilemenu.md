@@ -8,7 +8,7 @@ This is where I upload my batchfile creations
 
 # azwqxr batch files library (testing version)
 
-<a href="github.com/azwqxr/blob/main/screenshot.png" download>Click me</a>
-<a href="github.com/azwqxr/blob/main/screenshot.png" download>
- <img src="github.com/azwqxr/blob/main/screenshot.png" alt="Click to download">
+<a href="https://github.com/azwqxr/blob/main/screenshot.png" download>Click me</a>
+<a href="https://github.com/azwqxr/blob/main/screenshot.png" download>
+ <img src="https://github.com/azwqxr/blob/main/screenshot.png" alt="Click to download">
 </a>
