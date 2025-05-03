@@ -3,102 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Discord Bot</title>
+  <title>ate title for lunch sorry</title>
   <style>
     :root {
-      --accent-green: #28a745;
-      --background: #ffffff;
-      --text-color: #333;
+      --accent: #28a745;
+      --bg: #ffffff;
+      --text: #333;
+      --card: #f9f9f9;
+    }
+
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --text: #f5f5f5;
+      --card: #2c2c2c;
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background);
-      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s ease;
     }
 
     header {
-      background-color: var(--accent-green);
-      padding: 1.5rem 2rem;
+      background: var(--accent);
       color: white;
       text-align: center;
+      padding: 2rem 1rem;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      background-color: var(--accent-green);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: white;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: bold;
       border-radius: 5px;
-      font-size: 1rem;
       cursor: pointer;
-      text-decoration: none;
     }
 
-    .btn:hover {
-      background-color: #218838;
-    }
-
-    .about {
-      padding: 2rem;
+    section {
       max-width: 800px;
-      margin: auto;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    a.download-btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      text-decoration: none;
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #f0f0f0;
+      background: #f0f0f0;
       margin-top: 2rem;
+      color: #333;
+    }
+
+    [data-theme="dark"] footer {
+      background: #111;
+      color: #ccc;
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
+  <button class="theme-toggle" onclick="toggleTheme()">ez to read mode</button>
+
   <header>
     <h1>azwqxr's hideout</h1>
+    <p>the website for all things azwqxr</p>
   </header>
 
-  <section class="hero">
-    <h2>azOS admin bot</h2>
-    <a href="https://discord.com/oauth2/authorize?client_id=1235707902031822849" class="btn">Invite Bot</a>
-  </section>
+  <section>
+    <div class="card">
+      <h3>azwqxr batch files</h3>
+      <p>.bat files that I made</p>
+      <a href="https://azwqxr.github.io/batch.html">View</a>
+      <a href="scripts/cleanup.bat" download class="download-btn">View github page</a>
+      </div>
 
-    <section class="hero">
-    <h2>Your friendly bot for moderation, fun, and more!</h2>
-    <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID&scope=bot" class="btn">Invite Bot</a>
-  </section>
+    <div class="card">
+      <h3>Backup Script</h3>
+      <p>Copies files from your selected folder to a backup location.</p>
+      <a href="scripts/backup.bat" download class="download-btn">Download backup.bat</a>
+    </div>
 
-    <section class="hero">
-    <h2>Your friendly bot for moderation, fun, and more!</h2>
-    <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID&scope=bot" class="btn">Invite Bot</a>
-  </section>
-
-  <section class="about">
-    <h3>About the Bot</h3>
-    <p>
-      This bot helps manage your Discord server with powerful moderation tools, fun commands, and custom features.
-      Add it to your server and start exploring what it can do!
-    </p>
+    <div class="card">
+      <h3>Launcher Script</h3>
+      <p>Launches multiple programs at once when you start your PC.</p>
+      <a href="scripts/launcher.bat" download class="download-btn">Download launcher.bat</a>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 My Discord Bot. All rights reserved.
+    azwqxrs hideout
   </footer>
+
+  <script>
+    function toggleTheme() {
+      const current = document.body.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", newTheme);
+      document.querySelector(".theme-toggle").textContent = newTheme === "dark" ? "let there be light" : "ez to read mode";
+    }
+  </script>
 </body>
 </html>
