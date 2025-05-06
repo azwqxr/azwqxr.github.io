@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ate title for lunch sorry</title>
+  <title>azwqxrbatchfiles</title>
   <style>
     :root {
       --accent: #28a745;
@@ -87,31 +87,61 @@
 <body data-theme="light">
   <button class="theme-toggle" onclick="toggleTheme()">ez to read mode</button>
 
-  </style>
-</head>
-<body>
   <header>
-    <h1>My Minecraft Mods</h1>
+    <h1>azwqxrbatchfiles</h1>
+    <p>Batch files that I make</p>
+    <p>These files only work on WINDOWS, not Mac, not Linux.</p>
   </header>
 
-  <div class="container">
-    <div class="mod">
-      <h2>Awesome Mod 1</h2>
-      <p>A cool description of what this mod does and why people will love it.</p>
-      <a class="download-btn" href="mods/awesome-mod-1.zip" download>Download</a>
+  <section>
+    <div class="card">
+      <h3>Internet Speed Check</h3>
+      <p>An application that shows you the upload/download speed of your network and you can use any website you want (even this one)</p>
+    <a href="scripts/internetresponse.bat" class="download-button" download>Download</a>
     </div>
 
-    <div class="mod">
-      <h2>Epic Mod 2</h2>
-      <p>This mod adds something epic to your Minecraft world. Try it out!</p>
-      <a class="download-btn" href="mods/epic-mod-2.zip" download>Download</a>
+    <div class="card">
+      <h3>Windows servicing tool</h3>
+      <p>a tool that allows you to fix your windows by restoring important windows files if it is acting wierd</p>
+    <a href="scripts/windowsservicingtool.bat" class="download-button" download>Download</a>
     </div>
 
-    <!-- Add more mods here -->
-  </div>
+    <div class="card">
+      <h3>gui</h3>
+      <p>a file that allows you to make custom notifications, popup boxes, etc</p>
+    <a href="scripts/gui.bat" class="download-button" download>Download</a>
+    </div>
+
+        <div class="card">
+      <h3>MSTSC made ez</h3>
+      <p>a file that allows you to connect to another computer using MSTSC (Remote Desktop Connection)</p>
+    <a href="scripts/rdc.bat" class="download-button" download>Download</a>
+    </div>
+
+        <div class="card">
+      <h3>Information</h3>
+      <p>a file that tells you your system specs</p>
+    <a href="scripts/info.bat" class="download-button" download>Download</a>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 YourName | All rights reserved.
+        <a href="https://github.com/azwqxr/azwqxrbatchfiles" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    azwqxrbatchfiles on GitHub
+</a>
+    -------azwqxrs hideout-------
+      <a href="https://azwqxr.github.io/" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    Home
+</a>
   </footer>
+
+  <script>
+    function toggleTheme() {
+      const current = document.body.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", newTheme);
+      document.querySelector(".theme-toggle").textContent = newTheme === "dark" ? "let there be light" : "ez to read mode";
+    }
+  </script>
 </body>
 </html>
