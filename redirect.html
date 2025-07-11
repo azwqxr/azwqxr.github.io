@@ -16,20 +16,21 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden; /* Prevent scrollbars when doors cover the whole screen */
       background-color: #2b2d42;
     }
 
     .container {
       position: relative;
-      width: 500px;
-      height: 300px;
+      width: 100vw;
+      height: 100vh;
     }
 
     .door {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 100px;
+      width: 33.33vw; /* Each door takes up 1/3 of the screen width */
       background-size: cover;
       transform-origin: left;
       animation-duration: 1.5s;
@@ -42,7 +43,7 @@
     }
 
     .door-middle {
-      left: 150px;
+      left: 33.33vw;
       background-image: url('https://img.freepik.com/free-photo/shutter-garage-wall-background_1150-12920.jpg?semt=ais_hybrid&w=740'); /* Middle door texture */
     }
 
@@ -89,7 +90,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(0);
+        transform: translateX(100%);
       }
     }
 
@@ -143,5 +144,7 @@
       }, 2500); // Wait until the doors have finished closing (slightly longer than animation)
     };
   </script>
+</body>
+</html>
 </body>
 </html>
