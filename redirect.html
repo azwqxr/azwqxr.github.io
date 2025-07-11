@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Door Animation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+    }
+
+    .door-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .door {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background-color: #333;
+      animation: close 2s forwards;
+    }
+
+    .door.left {
+      left: 0;
+    }
+
+    .door.right {
+      right: 0;
+    }
+
+    @keyframes close {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      font-size: 20px;
+      display: none;
+    }
+
+    .content h1 {
+      margin: 20px;
+      font-size: 36px;
+    }
+
+    .content p {
+      margin: 10px;
+      font-size: 18px;
+    }
+
+    .content button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #00bcd4;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .content button:hover {
+      background-color: #00796b;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="door-container">
+  <div class="door left"></div>
+  <div class="door right"></div>
+  
+  <div class="content" id="content">
+    <h1>Access Granted</h1>
+    <p>Welcome to my GitHub!</p>
+    <button onclick="redirectToGitHub()">Go to GitHub</button>
+  </div>
+</div>
+
+<script>
+  // Delay the appearance of content after doors animation
+  setTimeout(() => {
+    document.querySelector('.content').style.display = 'block';
+  }, 2000); // 2 seconds after doors close
+  
+  // Function to handle redirect
+  function redirectToGitHub() {
+    window.location.href = "azwqxr.github.io"; // Replace with your actual GitHub link
+  }
+</script>
+
+</body>
+</html>
