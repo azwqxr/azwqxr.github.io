@@ -33,22 +33,22 @@
       width: 33.33vw; /* Each door takes up 1/3 of the screen width */
       background-size: cover;
       transform-origin: left;
-      animation-duration: 1.5s;
+      animation-duration: 2s;
       animation-timing-function: ease-in-out;
     }
 
     .door-left {
-      left: 0;
+      left: -33.33vw; /* Start off-screen to the left */
       background-image: url('https://img.freepik.com/premium-vector/prison-metal-bars-rods-isolated-white-background-realistic-fence-jail-way-out-freedom-criminal-sentence-concept-illustration_168129-383.jpg?w=360'); /* Left door texture */
     }
 
     .door-middle {
-      left: 33.33vw;
+      left: 33.33vw; /* Start in the center */
       background-image: url('https://img.freepik.com/free-photo/shutter-garage-wall-background_1150-12920.jpg?semt=ais_hybrid&w=740'); /* Middle door texture */
     }
 
     .door-right {
-      right: 0;
+      right: -33.33vw; /* Start off-screen to the right */
       background-image: url('https://img.freepik.com/premium-vector/prison-metal-bars-rods-isolated-white-background-realistic-fence-jail-way-out-freedom-criminal-sentence-concept-illustration_168129-383.jpg?w=360'); /* Right door texture */
     }
 
@@ -103,16 +103,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    @keyframes close-door-right {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(100%);
+        transform: translateX(100vw);
       }
     }
 
@@ -121,7 +112,16 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(100%);
+        transform: translateX(100vw);
+      }
+    }
+
+    @keyframes close-door-right {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(100vw);
       }
     }
 
@@ -131,12 +131,12 @@
 
     .door-middle.closed {
       animation-name: close-door-middle;
-      animation-delay: 1.5s; /* Delay the middle door after the first one */
+      animation-delay: 2s; /* Delay the middle door after the first one */
     }
 
     .door-right.closed {
       animation-name: close-door-right;
-      animation-delay: 3s; /* Delay the right door after the second one */
+      animation-delay: 4s; /* Delay the right door after the second one */
     }
   </style>
 </head>
@@ -174,7 +174,7 @@
       // Show the button and text after a delay (after all doors close)
       setTimeout(() => {
         showText();
-      }, 4500); // Wait until all doors have finished closing (slightly longer than the total animation time)
+      }, 6000); // Wait until all doors have finished closing (slightly longer than the total animation time)
     };
   </script>
 </body>
