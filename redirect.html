@@ -13,6 +13,7 @@
       align-items: center;
       background-color: #121212;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
     .door-container {
@@ -27,20 +28,74 @@
       overflow: hidden;
     }
 
-    .door {
+    /* Left Sliding Door */
+    .door.left {
       position: absolute;
       width: 50%;
       height: 100%;
-      background-color: #333;
-      animation: close 2s forwards;
-    }
-
-    .door.left {
+      background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+      background-size: cover;
+      animation: close 3s forwards;
       left: 0;
     }
 
+    /* Right Sliding Door */
     .door.right {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/sandstone.png');
+      background-size: cover;
+      animation: close 3s forwards;
       right: 0;
+    }
+
+    /* Top Sliding Door */
+    .door.top {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
+      background-size: cover;
+      animation: closeTopBottom 3s forwards;
+      top: 0;
+    }
+
+    /* Bottom Sliding Door */
+    .door.bottom {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background-image: url('https://www.transparenttextures.com/patterns/brick-wall.png');
+      background-size: cover;
+      animation: closeTopBottom 3s forwards;
+      bottom: 0;
+    }
+
+    /* Diagonal Left-Top Door */
+    .door.diagonal.left-top {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      background-image: url('https://www.transparenttextures.com/patterns/fall-wood.png');
+      background-size: cover;
+      animation: closeDiagonal 3s forwards;
+      top: 0;
+      left: 0;
+      transform-origin: top left;
+    }
+
+    /* Diagonal Right-Bottom Door */
+    .door.diagonal.right-bottom {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      background-image: url('https://www.transparenttextures.com/patterns/crosshatch.png');
+      background-size: cover;
+      animation: closeDiagonal 3s forwards;
+      bottom: 0;
+      right: 0;
+      transform-origin: bottom right;
     }
 
     @keyframes close {
@@ -49,6 +104,24 @@
       }
       to {
         transform: translateX(100%);
+      }
+    }
+
+    @keyframes closeTopBottom {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes closeDiagonal {
+      from {
+        transform: rotate(0deg) translate(0, 0);
+      }
+      to {
+        transform: rotate(45deg) translate(100%, 100%);
       }
     }
 
@@ -90,9 +163,18 @@
 <body>
 
 <div class="door-container">
+  <!-- Left and Right Sliding Doors -->
   <div class="door left"></div>
   <div class="door right"></div>
-  
+
+  <!-- Top and Bottom Sliding Doors -->
+  <div class="door top"></div>
+  <div class="door bottom"></div>
+
+  <!-- Diagonal Doors -->
+  <div class="door diagonal left-top"></div>
+  <div class="door diagonal right-bottom"></div>
+
   <div class="content" id="content">
     <h1>Access Granted</h1>
     <p>Welcome to my GitHub!</p>
@@ -104,11 +186,11 @@
   // Delay the appearance of content after doors animation
   setTimeout(() => {
     document.querySelector('.content').style.display = 'block';
-  }, 2000); // 2 seconds after doors close
+  }, 3000); // 3 seconds after doors close
   
   // Function to handle redirect
   function redirectToGitHub() {
-    window.location.href = "azwqxr.github.io"; // Replace with your actual GitHub link
+    window.location.href = "https://github.com/yourusername"; // Replace with your actual GitHub link
   }
 </script>
 
