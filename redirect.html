@@ -66,6 +66,37 @@
       display: none;
     }
 
+    .button-container {
+      position: relative;
+    }
+
+    /* Style for the button */
+    #btn {
+      background-color: green; /* Green button */
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none; /* Remove underline for links */
+      transition: background-color 0.3s;
+    }
+
+    /* Button hover effect */
+    #btn:hover {
+      background-color: darkgreen;
+    }
+
+    /* Position the text above the button */
+    #message {
+      position: absolute;
+      top: -40px; /* Text will appear above the button */
+      width: 100%;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
     /* Keyframe animation for doors closing */
     @keyframes close-door-left {
       0% {
@@ -100,12 +131,12 @@
 
     .door-middle.closed {
       animation-name: close-door-middle;
-      animation-delay: 0.5s;
+      animation-delay: 1.5s; /* Delay the middle door after the first one */
     }
 
     .door-right.closed {
       animation-name: close-door-right;
-      animation-delay: 1s;
+      animation-delay: 3s; /* Delay the right door after the second one */
     }
   </style>
 </head>
@@ -118,8 +149,10 @@
     
     <!-- Button and text -->
     <div class="content">
-      <button id="btn" class="hidden">Click Me</button>
-      <p id="message" class="hidden">Doors are closed!</p>
+      <div class="button-container">
+        <a id="btn" href="https://example.com" target="_blank" class="hidden">Click Me</a>
+        <p id="message" class="hidden">Doors are closed!</p>
+      </div>
     </div>
   </div>
 
@@ -138,13 +171,11 @@
       document.querySelector('.door-middle').classList.add('closed');
       document.querySelector('.door-right').classList.add('closed');
 
-      // Show the button and text after a delay
+      // Show the button and text after a delay (after all doors close)
       setTimeout(() => {
         showText();
-      }, 2500); // Wait until the doors have finished closing (slightly longer than animation)
+      }, 4500); // Wait until all doors have finished closing (slightly longer than the total animation time)
     };
   </script>
-</body>
-</html>
 </body>
 </html>
