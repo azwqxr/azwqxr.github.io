@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --green: #28a745;
+      --bg: #f8f9fa;
+      --sidebar-bg: #ffffff;
+      --text: #212529;
+      --border: #e5e5e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .sidebar h1 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--green);
+    }
+
+    .nav-link,
+    .folder-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-link:hover,
+    .folder-header:hover {
+      background: rgba(40, 167, 69, 0.1);
+    }
+
+    .nav-link.active {
+      background: rgba(40, 167, 69, 0.15);
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .folder {
+      margin-top: 8px;
+    }
+
+    .folder-header {
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .folder-content {
+      margin-left: 16px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .folder.open .folder-content {
+      display: block;
+    }
+
+    /* Main content */
+    .content {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+    }
+
+    .content h2 {
+      color: var(--green);
+      margin-top: 0;
+    }
+
+    .code-block {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: monospace;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h1>azwqxrOS docs</h1>
+
+    <a href="https://azwqxr.github.io" class="nav-link">Return to home page</a>
+
+    <div class="folder">
+      <div class="folder-header" onclick="toggleFolder(this)">
+        azwqxrOS Download Manager
+      </div>
+      <div class="folder-content">
+        <a href="#azos-download-mngr" class="nav-link">README</a>
+        <a href="#quickstart" class="nav-link">Quick Start</a>
+      </div>
+    </div>
+
+    <div class="folder">
+      <div class="folder-header" onclick="toggleFolder(this)">
+        placeholder folder
+      </div>
+      <div class="folder-content">
+        <a href="#auth" class="nav-link">Authentication</a>
+        <a href="#endpoints" class="nav-link">Endpoints</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <main class="content" id="content"></main>
+
+  <script>
+    const pages = {
+      home: `
+        <h2>azwqxrOS Docs</h2>
+        <p>for if you cant figure it out on your own and you need me there to help you but i cant really be there so youre here now right??</p>
+      `,
+      azos-download-mngr: `
+        <h2>azwqxrOS Download Manager</h2>
+        <p>if youre reading this, you probably installed the app and it has told you to come here. these are the docs for the app if you need help or you have gotten stuck. They will walk you through every single step.</p>
+        <div class="code-block">npm install my-app</div>
+      `,
+      quickstart: `
+        <h2>Quick Start</h2>
+        <p>Get up and running in minutes.</p>
+      `,
+      auth: `
+        <h2>Authentication</h2>
+        <p>All API requests require an API key.</p>
+      `,
+      endpoints: `
+        <h2>API Endpoints</h2>
+        <p>Here is a list of available endpoints.</p>
+      `
+    };
+
+    function toggleFolder(header) {
+      header.parentElement.classList.toggle("open");
+    }
+
+    function loadFromHash() {
+      const page = location.hash.substring(1) || "home";
+      document.getElementById("content").innerHTML =
+        pages[page] || "<h2>Not Found</h2>";
+
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${page}`
+        );
+      });
+    }
+
+    window.addEventListener("hashchange", loadFromHash);
+    loadFromHash();
+  </script>
+
+</body>
+</html>
