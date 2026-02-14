@@ -2,183 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site Closed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ate title for lunch sorry</title>
   <style>
+    :root {
+      --accent: #28a745;
+      --bg: #ffffff;
+      --text: #333;
+      --card: #f9f9f9;
+    }
+
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --text: #f5f5f5;
+      --card: #2c2c2c;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s ease;
     }
 
-    .container {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 520px;
-      width: 100%;
+    header {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
     }
 
-    .message {
-      font-size: 16px;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .password-input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    button {
-      padding: 10px 16px;
-      font-size: 15px;
-      border: none;
-      border-radius: 4px;
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: white;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: bold;
+      border-radius: 5px;
       cursor: pointer;
     }
 
-    button:disabled {
-      background-color: #cccccc !important;
-      cursor: not-allowed;
-      color: #666666;
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
 
-    .submit-btn {
-      background-color: #28a745;
-      color: #ffffff;
+    .card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .status-btn {
-      background-color: #007bff;
-      color: #ffffff;
+    a.download-btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      text-decoration: none;
     }
 
-    .submit-btn:hover {
-      background-color: #218838;
-    }
-
-    .status-btn:hover {
-      background-color: #0069d9;
-    }
-
-    .show-password {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f0f0f0;
+      margin-top: 2rem;
       color: #333;
     }
-  @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+
+    [data-theme="dark"] footer {
+      background: #111;
+      color: #ccc;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="message">
-      Hello! Unfortunately, the website azwqxrs hideout is closed right now. Please enter the admin password or check the status page if you think this is a mistake.
+<body data-theme="light">
+  <button class="theme-toggle" onclick="toggleTheme()">ez to read mode</button>
+
+  <header>
+    <h1>azwqxr's hideout</h1>
+    <p>the website for all things azwqxr</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h3>azwqxrOS addons</h3>
+      <p>.bat files that I made (formerly azwqxrbatchfiles)</p>
+<a href="https://azwqxr.github.io/batch.html" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    Go
+</a>
+      </div>
+
+    <div class="card">
+      <h3>Bots</h3>
+      <p>Free discord bots by me</p>
+<a href="https://azwqxr.github.io/bots.html" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    Go
+</a>
     </div>
 
-    <input
-      type="password"
-      id="password"
-      class="password-input"
-      placeholder="Enter admin password"
-    />
-
-    <div id="spinner" style="display:none; margin-bottom: 15px;">
-      <div style="width:24px;height:24px;border:4px solid #ccc;border-top:4px solid #28a745;border-radius:50%;animation:spin 1s linear infinite;"></div>
+    <div class="card">
+      <h3>Tools</h3>
+      <p>become bob the builder</p>
+<a href="https://azwqxr.github.io/tools/" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    Go
+</a>
     </div>
 
-    <div class="buttons">
-      <button class="submit-btn">Submit password</button>
-      <button class="status-btn">Go to status page</button>
+        <div class="card">
+      <h3>azwqxrOS Docs</h3>
+      <p>if you need a little help with any of my fine services</p>
+<a href="https://azwqxr.github.io/docs" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    Go
+</a>
     </div>
 
-    <label class="show-password">
-      <input type="checkbox" id="showPassword" />
-      Show Password
-    </label>
-  </div>
+
+        <div class="card">
+      <h3>azwqxr approved PCs</h3>
+      <p>pcs that i make</p>
+<a href="https://azwqxr.github.io/pc.html" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    Go
+</a>
+        </div>
+  </section>
+
+  <footer>
+    azwqxrs hideout
+  </footer>
 
   <script>
-    const passwordInput = document.getElementById('password');
-    const showPasswordCheckbox = document.getElementById('showPassword');
-    const submitButton = document.querySelector('.submit-btn');
-    const spinner = document.getElementById('spinner');
-    const statusButton = document.querySelector('.status-btn');
-
-    submitButton.disabled = true;
-
-    // CONFIGURATION
-    const CORRECT_PASSWORD = 'admin123'; // change this
-    const REDIRECT_URL = 'https://azwqxr.github.io/override'; // change this
-    const STATUS_PAGE_URL = 'https://azwqxrshideout.statuspage.io/'; // change this // change this
-
-    // Error message element
-    const errorMessage = document.createElement('div');
-    errorMessage.style.color = 'red';
-    errorMessage.style.marginTop = '10px';
-    errorMessage.style.display = 'none';
-    errorMessage.textContent = 'Error password incorrect';
-    passwordInput.after(errorMessage);
-
-    // Show / hide password
-    showPasswordCheckbox.addEventListener('change', () => {
-      passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
-    });
-
-    function submitPassword() {
-      if (passwordInput.value === CORRECT_PASSWORD) {
-        errorMessage.style.display = 'none';
-        spinner.style.display = 'block';
-        submitButton.disabled = true;
-
-        setTimeout(() => {
-          window.location.href = REDIRECT_URL;
-        }, 1500);
-      } else {
-        errorMessage.style.display = 'block';
-      }
+    function toggleTheme() {
+      const current = document.body.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", newTheme);
+      document.querySelector(".theme-toggle").textContent = newTheme === "dark" ? "let there be light" : "ez to read mode";
     }
-
-    submitButton.addEventListener('click', submitPassword);
-
-    passwordInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !submitButton.disabled) {
-        submitPassword();
-      }
-    });
-
-    passwordInput.addEventListener('input', () => {
-      submitButton.disabled = passwordInput.value.length === 0;
-      errorMessage.style.display = 'none';
-    });
-
-    // Go to status page
-    statusButton.addEventListener('click', () => {
-      window.location.href = STATUS_PAGE_URL;
-    });
   </script>
-</body>
 
 <script src="https://azwqxrshideout.statuspage.io/embed/script.js"></script>
   
+</body>
 </html>
