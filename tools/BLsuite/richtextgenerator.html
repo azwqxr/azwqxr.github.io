@@ -2,141 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>build logic richtext generator</title>
+<title>BL richtext generator: remade</title>
 
 <style>
-    body {
-        margin: 0;
-        background: #0b0b0b;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #eaeaea;
-    }
+body {
+    margin: 0;
+    background: #0b0b0b;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eaeaea;
+}
 
-    .container {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
-    }
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
 
-    h1 {
-        text-align: center;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    .toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        background: #151515;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 16px;
-    }
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #151515;
+    padding: 12px;
+    border-radius: 8px;
+}
 
-    .color {
-        width: 22px;
-        height: 22px;
-        border-radius: 4px;
-        cursor: pointer;
-        border: 1px solid #000;
-    }
+.color {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #000;
+}
 
-    .btn {
-        background: #1f1f1f;
-        color: #fff;
-        border: 1px solid #333;
-        padding: 6px 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 13px;
-    }
+.btn {
+    background: #1f1f1f;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
 
-    .btn:hover {
-        background: #2a2a2a;
-    }
+.btn:hover {
+    background: #2a2a2a;
+}
 
-    label {
-        display: block;
-        margin: 16px 0 6px;
-        font-weight: 600;
-    }
+label {
+    display: block;
+    margin: 16px 0 6px;
+    font-weight: 600;
+}
 
-    textarea, select, .box {
-        width: 100%;
-        background: #121212;
-        color: #fff;
-        border: 1px solid #2a2a2a;
-        border-radius: 6px;
-        padding: 10px;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
+textarea, select, .box {
+    width: 100%;
+    background: #121212;
+    color: #fff;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
 
-    textarea {
-        min-height: 90px;
-        resize: vertical;
-    }
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
 
-    .preview {
-        font-family: monospace;
-        min-height: 60px;
-    }
+.preview {
+    min-height: 60px;
+    font-family: monospace;
+}
 
-    .output {
-        font-family: monospace;
-        white-space: pre-wrap;
-        word-break: break-all;
-    }
+.output {
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-family: monospace;
+}
 </style>
 </head>
-<body>
 
+<body>
 <div class="container">
-    <h1>build logic richtext generator</h1>
+    <h1>build logic richtext generator: remade</h1>
 
     <div class="toolbar">
-        <!-- colors -->
-        <div class="color" style="background:#000000" onclick="addCode('&0')"></div>
-        <div class="color" style="background:#0000AA" onclick="addCode('&1')"></div>
-        <div class="color" style="background:#00AA00" onclick="addCode('&2')"></div>
-        <div class="color" style="background:#00AAAA" onclick="addCode('&3')"></div>
-        <div class="color" style="background:#AA0000" onclick="addCode('&4')"></div>
-        <div class="color" style="background:#AA00AA" onclick="addCode('&5')"></div>
-        <div class="color" style="background:#FFAA00" onclick="addCode('&6')"></div>
-        <div class="color" style="background:#AAAAAA" onclick="addCode('&7')"></div>
-        <div class="color" style="background:#555555" onclick="addCode('&8')"></div>
-        <div class="color" style="background:#5555FF" onclick="addCode('&9')"></div>
-        <div class="color" style="background:#55FF55" onclick="addCode('&a')"></div>
-        <div class="color" style="background:#55FFFF" onclick="addCode('&b')"></div>
-        <div class="color" style="background:#FF5555" onclick="addCode('&c')"></div>
-        <div class="color" style="background:#FF55FF" onclick="addCode('&d')"></div>
-        <div class="color" style="background:#FFFF55" onclick="addCode('&e')"></div>
-        <div class="color" style="background:#FFFFFF" onclick="addCode('&f')"></div>
+        <div class="color" style="background:#000000" onclick="addCode('§0')"></div>
+        <div class="color" style="background:#0000AA" onclick="addCode('§1')"></div>
+        <div class="color" style="background:#00AA00" onclick="addCode('§2')"></div>
+        <div class="color" style="background:#00AAAA" onclick="addCode('§3')"></div>
+        <div class="color" style="background:#AA0000" onclick="addCode('§4')"></div>
+        <div class="color" style="background:#AA00AA" onclick="addCode('§5')"></div>
+        <div class="color" style="background:#FFAA00" onclick="addCode('§6')"></div>
+        <div class="color" style="background:#AAAAAA" onclick="addCode('§7')"></div>
+        <div class="color" style="background:#555555" onclick="addCode('§8')"></div>
+        <div class="color" style="background:#5555FF" onclick="addCode('§9')"></div>
+        <div class="color" style="background:#55FF55" onclick="addCode('§a')"></div>
+        <div class="color" style="background:#55FFFF" onclick="addCode('§b')"></div>
+        <div class="color" style="background:#FF5555" onclick="addCode('§c')"></div>
+        <div class="color" style="background:#FF55FF" onclick="addCode('§d')"></div>
+        <div class="color" style="background:#FFFF55" onclick="addCode('§e')"></div>
+        <div class="color" style="background:#FFFFFF" onclick="addCode('§f')"></div>
 
-        <button class="btn" onclick="addCode('&l')">Bold</button>
-        <button class="btn" onclick="addCode('&n')">Underline</button>
-        <button class="btn" onclick="addCode('&o')">Italic</button>
-        <button class="btn" onclick="addCode('&m')">Strike</button>
-        <button class="btn" onclick="addCode('&k')">Obfuscated</button>
-        <button class="btn" onclick="addCode('&r')">Reset</button>
+        <button class="btn" onclick="addCode('§l')">Bold</button>
+        <button class="btn" onclick="addCode('§n')">Underline</button>
+        <button class="btn" onclick="addCode('§o')">Italic</button>
+        <button class="btn" onclick="addCode('§m')">Strike</button>
+        <button class="btn" onclick="addCode('§k')">Obfuscated</button>
+        <button class="btn" onclick="addCode('§r')">Reset</button>
     </div>
 
     <label>minecraft formatting:</label>
-    <textarea id="input">&4hello &2world &r!</textarea>
+    <textarea id="input">§4hello §2world §r!</textarea>
 
     <label>other options:</label>
-    <select>
-        <option>wip</option>
+    <select id="fontSelect">
+        <option value="">Default</option>
+        <option value="Legacy">Legacy</option>
+        <option value="Arial">Arial</option>
+        <option value="ArialBold">ArialBold</option>
+        <option value="SourceSans">SourceSans</option>
+        <option value="SourceSansBold">SourceSansBold</option>
+        <option value="Gotham">Gotham</option>
+        <option value="GothamBold">GothamBold</option>
+        <option value="GothamBlack">GothamBlack</option>
+        <option value="Cartoon">Cartoon</option>
+        <option value="Code">Code</option>
+        <option value="SciFi">SciFi</option>
+        <option value="Arcade">Arcade</option>
     </select>
 
     <label>preview:</label>
     <div id="preview" class="box preview"></div>
 
-    <label>output:</label>
+    <label>output (paste into /richtext):</label>
     <div id="output" class="box output"></div>
 </div>
+    <a href="https://azwqxr.github.io/tools/BLsuite" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    return to BL tools suite
+</a>
 
+    <a href="https://azwqxr.github.io" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
+    go home
+</a>
+</div>
+    
 <script>
 const colors = {
     0:"#000000",1:"#0000AA",2:"#00AA00",3:"#00AAAA",
@@ -145,38 +162,42 @@ const colors = {
     c:"#FF5555",d:"#FF55FF",e:"#FFFF55",f:"#FFFFFF"
 };
 
+const robloxFonts = {
+    Legacy: "Arial, sans-serif",
+    Arial: "Arial, sans-serif",
+    ArialBold: "Arial Black, Arial, sans-serif",
+    SourceSans: "Arial, sans-serif",
+    SourceSansBold: "Arial, sans-serif",
+    Gotham: "Helvetica, Arial, sans-serif",
+    GothamBold: "Helvetica, Arial, sans-serif",
+    GothamBlack: "Arial Black, sans-serif",
+    Cartoon: "Comic Sans MS, cursive",
+    Code: "Courier New, monospace",
+    SciFi: "Orbitron, Arial, sans-serif",
+    Arcade: "Press Start 2P, monospace"
+};
+
 function addCode(code) {
     const input = document.getElementById("input");
-
     const start = input.selectionStart;
     const end = input.selectionEnd;
-    const value = input.value;
 
     input.value =
-        value.slice(0, start) +
+        input.value.slice(0, start) +
         code +
-        value.slice(end);
+        input.value.slice(end);
 
-    // move cursor AFTER inserted code
     input.selectionStart = input.selectionEnd = start + code.length;
-
     input.focus();
     update();
-
-}
-
-function update() {
-    const text = document.getElementById("input").value;
-    document.getElementById("preview").innerHTML = render(text);
-    document.getElementById("output").textContent = toFont(text);
 }
 
 function render(text) {
-    let html = "";
+    let html = "<span>";
     let color = "#FFFFFF";
 
     for (let i = 0; i < text.length; i++) {
-        if (text[i] === "&" && colors[text[i+1]]) {
+        if (text[i] === "§" && colors[text[i+1]]) {
             color = colors[text[i+1]];
             i++;
             html += `</span><span style="color:${color}">`;
@@ -184,31 +205,48 @@ function render(text) {
             html += text[i];
         }
     }
-    return `<span style="color:${color}">${html}</span>`;
+    return html + "</span>";
 }
 
-function toFont(text) {
-    let result = "";
-    let current = null;
+function toRichText(text, fontFace) {
+    let out = "";
+    let currentColor = null;
 
     for (let i = 0; i < text.length; i++) {
-        if (text[i] === "&" && colors[text[i+1]]) {
-            if (current) result += "</font>";
-            current = colors[text[i+1]];
-            result += `<font color="${current}">`;
+        if (text[i] === "§" && colors[text[i+1]]) {
+            if (currentColor) out += "</font>";
+            currentColor = colors[text[i+1]];
+            out += `<font color="${currentColor}">`;
             i++;
         } else {
-            result += text[i];
+            out += text[i];
         }
     }
 
-    if (current) result += "</font>";
-    return result;
+    if (currentColor) out += "</font>";
+
+    if (fontFace) {
+        out = `<font face="${fontFace}">` + out + `</font>`;
+    }
+
+    return out;
 }
 
-document.getElementById("input").addEventListener("input", update);
+function update() {
+    const text = input.value;
+    const fontKey = fontSelect.value;
+    const previewFont = robloxFonts[fontKey] || "monospace";
+
+    preview.style.fontFamily = previewFont;
+    output.style.fontFamily = previewFont;
+
+    preview.innerHTML = render(text);
+    output.textContent = toRichText(text, fontKey);
+}
+
+input.addEventListener("input", update);
+fontSelect.addEventListener("change", update);
 update();
 </script>
-
 </body>
 </html>
