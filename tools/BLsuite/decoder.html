@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound ID Decoder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: green;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Sound ID Decoder</h2>
+  <input type="text" id="inputText" placeholder="Type your word here...">
+
+  <div class="buttons">
+    <button onclick="goBack()">Return to BL tools suite</button>
+    <button onclick="decode()">Decode</button>
+  </div>
+</div>
+
+<script>
+  function goBack() {
+    // Change this URL to your actual tools suite link
+    window.location.href = "https://azwqxr.github.io/tools/BLsuite";
+  }
+
+  function decode() {
+    const text = document.getElementById("inputText").value;
+
+    // Store in variable (can be used however you want)
+    const decodedValue = text;
+
+    // Example: pass it as a query parameter to another page
+    const url = `https://create.roblox.com/store/asset/%7BencodeURIComponent(decodedValue)%7D/decodedbyazwqxr?pageNumber=0&pagePosition=1`;
+
+    // Open in new tab
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
