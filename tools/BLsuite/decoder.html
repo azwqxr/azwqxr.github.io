@@ -77,7 +77,7 @@
     const decodedValue = text;
 
     // Example: pass it as a query parameter to another page
-    const url = `https://create.roblox.com/store/asset/%7BencodeURIComponent(decodedValue)%7D/decodedbyazwqxr?pageNumber=0&pagePosition=1`;
+    const url = `https://create.roblox.com/store/asset/${encodeURIComponent(decodedValue)}/decoded-by-azwqxr?assetType=Audio&externalSource=www`;
 
     // Open in new tab
     window.open(url, '_blank');
