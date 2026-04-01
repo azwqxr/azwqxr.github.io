@@ -84,6 +84,90 @@
     }
   </style>
 </head>
+  <style>
+  #screensaver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  #screensaver img {
+    position: absolute;
+    width: 120px; /* adjust size if needed */
+    pointer-events: none;
+  }
+</style>
+
+<div id="screensaver">
+  <img id="dvdLogo" src="/images/screensaver.png" alt="Screensaver Logo">
+</div>
+
+<script>
+  const idleTimeLimit = 1 * 60 * 1000; // 5 minutes
+  let idleTimer;
+  let screensaverActive = false;
+
+  const screensaver = document.getElementById("screensaver");
+  const logo = document.getElementById("dvdLogo");
+
+  let x = 100, y = 100;
+  let dx = 2, dy = 2;
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+
+    if (screensaverActive) {
+      stopScreensaver();
+    }
+
+    idleTimer = setTimeout(startScreensaver, idleTimeLimit);
+  }
+
+  function startScreensaver() {
+    screensaver.style.display = "block";
+    screensaverActive = true;
+    animate();
+  }
+
+  function stopScreensaver() {
+    screensaver.style.display = "none";
+    screensaverActive = false;
+  }
+
+  function animate() {
+    if (!screensaverActive) return;
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const rect = logo.getBoundingClientRect();
+
+    x += dx;
+    y += dy;
+
+    if (x + rect.width >= width || x <= 0) dx *= -1;
+    if (y + rect.height >= height || y <= 0) dy *= -1;
+
+    logo.style.left = x + "px";
+    logo.style.top = y + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  // Detect activity
+  ["mousemove", "keydown", "mousedown", "touchstart"].forEach(event => {
+    document.addEventListener(event, resetIdleTimer);
+  });
+
+  // Start timer initially
+  resetIdleTimer();
+</script>
+  
 <body data-theme="light">
   <button class="theme-toggle" onclick="toggleTheme()">ez to read mode</button>
 
