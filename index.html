@@ -129,16 +129,18 @@
     idleTimer = setTimeout(startScreensaver, idleTimeLimit);
   }
 
-  function startScreensaver() {
-    screensaver.style.display = "block";
-    screensaverActive = true;
-    animate();
-  }
+function startScreensaver() {
+  screensaver.style.display = "block";
+  document.body.style.overflow = "hidden"; // 🔥 disables scrollbar
+  screensaverActive = true;
+  animate();
+}
 
-  function stopScreensaver() {
-    screensaver.style.display = "none";
-    screensaverActive = false;
-  }
+function stopScreensaver() {
+  screensaver.style.display = "none";
+  document.body.style.overflow = ""; // 🔥 restores scrollbar
+  screensaverActive = false;
+}
 
   function animate() {
     if (!screensaverActive) return;
