@@ -109,7 +109,7 @@
 </div>
 
 <script>
-  const idleTimeLimit = 1 * 60 * 1000; // 5 minutes
+  const idleTimeLimit = 1 * 15 * 1000; // edit first number
   let idleTimer;
   let screensaverActive = false;
 
@@ -131,15 +131,17 @@
 
 function startScreensaver() {
   screensaver.style.display = "block";
-  document.body.style.overflow = "hidden"; // 🔥 disables scrollbar
+  document.body.style.overflow = "hidden"; // enable
   screensaverActive = true;
   animate();
+    <title>screensaver</title>
 }
 
 function stopScreensaver() {
   screensaver.style.display = "none";
-  document.body.style.overflow = ""; // 🔥 restores scrollbar
+  document.body.style.overflow = ""; // disable
   screensaverActive = false;
+  <title>ate title for lunch sorry</title>
 }
 
   function animate() {
