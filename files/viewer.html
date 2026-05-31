@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>azwqxr.github.io files viewer</title>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { padding: 8px 12px; border: 1px solid #ccc; }
+    th { background: #f6f6f6; }
+    a, button { word-break: break-word; }
+    button { cursor: pointer; padding: 4px 8px; }
+    #viewer {
+      margin-top: 2em;
+      padding: 1em;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>File List</h1>
+
+  <table id="fileTable">
+    <tr>
+      <th>azwqxr.github.io files viewer/downloader</th>
+      <th>Inspect</th>
+      <th>Download</th>
+    </tr>
+  </table>
+
+  <div id="viewer">
+    <h2>Inspector</h2>
+    <div id="viewerContent">Select a file to inspect its content.</div>
+  </div>
+
+  <script>
+    const owner = "azwqxr";
+    const repo = "azwqxr.github.io";
+    const branch = "main";
+    const filesDir = "files";
+
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filesDir}?ref=${branch}`;
+
+    fetch(apiUrl)
+      .then(res => res.json())
+      .then(files => {
+        if (!Array.isArray(files)) {
+          document.getElementById("fileTable").insertAdjacentHTML(
+            "beforeend",
+            `<tr><td colspan="3">No files found.</td></tr>`
+          );
+          return;
+        }
+
+        files.forEach(file => {
+          if (file.type !== "file") return;
+          const name = file.name;
+          const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${filesDir}/${name}`;
+
+          document.getElementById("fileTable").insertAdjacentHTML("beforeend", `
+            <tr>
+              <td>${name}</td>
+              <td><button onclick="viewContents('${rawUrl}', '${name}')">View Contents</button></td>
+              <td><button onclick="downloadFile('${rawUrl}', '${name}')">Download</button></td>
+            </tr>
+          `);
+        });
+      })
+      .catch(err => {
+        document.getElementById("fileTable").insertAdjacentHTML(
+          "beforeend",
+          `<tr><td colspan="3">Error loading files.</td></tr>`
+        );
+      });
+
+    function viewContents(url, filename) {
+      const extension = filename.split('.').pop().toLowerCase();
+      const viewer = document.getElementById('viewerContent');
+
+      if (extension === 'txt') {
+        fetch(url)
+          .then(resp => resp.text())
+          .then(text => {
+            viewer.innerHTML = `<pre style="white-space: pre-wrap;">${text}</pre>`;
+          })
+          .catch(() => {
+            viewer.innerHTML = `<p>Error loading text file.</p>`;
+          });
+      } else if (['ogg','mp3','wav','m4a'].includes(extension)) {
+        viewer.innerHTML = `
+          <audio controls autoplay style="width:100%">
+            <source src="${url}" type="audio/${extension === 'mp3' ? 'mpeg' : extension}">
+            Your browser does not support the audio element.
+          </audio>
+        `;
+      } else if (['png','jpg','jpeg','gif','webp','bmp','svg'].includes(extension)) {
+        viewer.innerHTML = `<img src="${url}" alt="${filename}" style="max-width:100%;">`;
+      } else if (['pdf'].includes(extension)) {
+        viewer.innerHTML = `<iframe src="${url}" style="width:100%; height:600px;" frameborder="0"></iframe>`;
+      } else {
+        viewer.innerHTML = `<p>Preview not supported. <a href="${url}" download>Download instead</a>.</p>`;
+      }
+    }
+
+    function downloadFile(url, filename) {
+      fetch(url)
+        .then(resp => resp.blob())
+        .then(blob => {
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+        })
+        .catch(err => console.error('Download failed', err));
+    }
+  </script>
+</body>
+</html>
