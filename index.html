@@ -1,166 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-Source - https://stackoverflow.com/a/66084540
-Posted by user, modified by community. See post 'Timeline' for change history
-Retrieved 2026-04-18, License - CC BY-SA 4.0
--->
-
-<meta property="og:title" content="azwqxrs hideout - home">
-<meta property="og:description" content="azwqxr's website for all the azwqxr related things that he makes">
-<meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png">
-  <meta name="theme-color" content="#28a745">
+  
+  <meta property="og:title" content="azwqxr's hideout" />
+  <meta property="og:description" content="the website for all things azwqxr" />
+  <meta property="og:url" content="https://azwqxr.github.io" />
+  <meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png" />
+  <meta name="theme-color" content="#00bb00" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>azwqxrs hideout</title>
 
 <style>
-:root {
-  --accent: #28a745;
-  --bg: #ffffff;
-  --text: #333;
-  --card: #f9f9f9;
+:root{
+    --accent:#00aa00;
+    --bg:#c0c0c0;
 }
 
-[data-theme="dark"] {
-  --bg: #1e1e1e;
-  --text: #f5f5f5;
-  --card: #2c2c2c;
+*{
+    box-sizing:border-box;
+    font-family: "MS Sans Serif", Tahoma, sans-serif;
 }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+body{
+    margin:0;
+    background:var(--bg);
+    color:#000;
 }
 
-/* HEADER */
-header {
-  background: var(--accent);
-  color: white;
-  text-align: center;
-  padding: 3rem 1rem;
-  position: relative;
+/* Top Bar */
+.topbar{
+    height:42px;
+    background:#808080;
+    border-bottom:2px solid #404040;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    gap:10px;
 }
 
-/* THEME BUTTON */
-.theme-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 20;
-  padding: 0.4rem 0.8rem;
-  background: white;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
+.home-btn{
+    text-decoration:none;
+    color:white;
+    background:var(--accent);
+    padding:6px 14px;
+    border:2px outset #00cc00;
+    font-weight:bold;
 }
 
-/* SOCIAL CARD */
-.social-card {
-  position: absolute;
-  top: 3.5rem;
-  right: 1rem;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #e7e7e7;
-  height: 50px;
-  width: 200px;
-  overflow: hidden;
+.home-btn:hover{
+    filter:brightness(1.1);
 }
 
-.social-card::before,
-.social-card::after {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  z-index: 3;
-  transition: 0.25s linear;
+.company-title{
+    color:white;
+    font-weight:bold;
 }
 
-.social-card::before {
-  left: 0;
-  background: #4d60b6;
+/* Main Window */
+.window{
+    width:min(900px,95%);
+    margin:30px auto;
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
 }
 
-.social-card::after {
-  right: 0;
-  background: #4453a6;
+.title-bar{
+    background:linear-gradient(
+        to right,
+        var(--accent),
+        #006600
+    );
+    color:white;
+    padding:4px 8px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
 }
 
-.social-card span {
-  position: absolute;
-  z-index: 4;
-  color: white;
-  font-weight: bold;
-  transition: 0.25s;
+.window-body{
+    padding:20px;
 }
 
-.social-link {
-  width: 25%;
-  height: 100%;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
+.hero{
+    text-align:center;
 }
 
-.social-card:hover span {
-  opacity: 0;
+.hero h1{
+    margin-top:0;
+    color:var(--accent);
 }
 
-.social-card:hover::before {
-  transform: translateY(-100%);
+.hero p{
+    font-size:18px;
 }
 
-.social-card:hover::after {
-  transform: translateY(100%);
+.button95{
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
+    padding:8px 16px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-/* MAIN CONTENT */
-section {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
+.button95:active{
+    border-top:2px solid #404040;
+    border-left:2px solid #404040;
+    border-right:2px solid white;
+    border-bottom:2px solid white;
 }
 
-.card {
-  background: var(--card);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+/* Popup Windows */
+.popup{
+    position:fixed;
+    width:350px;
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
+    display:none;
+    z-index:1000;
 }
 
-.download-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: var(--accent);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
+.popup-title{
+    background:linear-gradient(
+        to right,
+        var(--accent),
+        #006600
+    );
+    color:white;
+    padding:4px 8px;
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #f0f0f0;
+.close{
+    cursor:pointer;
+    padding:0 5px;
 }
 
-[data-theme="dark"] footer {
-  background: #111;
-  color: #ccc;
+.popup-body{
+    padding:10px;
+}
+
+.embed-box{
+    background:white;
+    border:2px inset gray;
+    height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.footer{
+    text-align:center;
+    margin:20px;
+    color:#444;
 }
 
 /* SCREENSAVER */
@@ -179,103 +184,108 @@ footer {
 </style>
 </head>
 
-<body data-theme="light">
+<body>
 
-<header>
-
-<button class="theme-toggle" onclick="toggleTheme()">ez to read mode</button>
-
-<div class="social-card">
-  <span>Social</span>
-  <a class="social-link" href="https://discord.gg/aAxKVua5HA">🎮</a>
-  <a class="social-link" href="https://www.youtube.com/@azsgames">▶️</a>
-  <a class="social-link" href="#">❌</a>
-  <a class="social-link" href="#">❌</a>
+<div class="topbar">
+    <div class="company-title">
+        azwqxr's hideout - the website for all things azwqxr
+    </div>
 </div>
 
-<h1>azwqxr's hideout</h1>
-<p>the website for all things azwqxr</p>
+<div class="window">
+    <div class="title-bar">
+        <span>azwqxr's hideout</span>
+        <span>□</span>
+    </div>
 
-</header>
+<div style="margin-top:20px;">
 
-<section>
+    <button class="button95"
+            onclick="location.href='batch.html'">
+        azwqxrOS addons
+    </button>
 
-<div class="card">
-  <h3>azwqxrOS addons</h3>
-  <p>.bat files that I made (formerly azwqxrbatchfiles)</p>
-  <a href="https://azwqxr.github.io/batch.html" class="download-btn" target="_blank">Go</a>
+    <button class="button95"
+            onclick="location.href='bots.html'">
+        Discord Bots
+    </button>
+
+    <button class="button95"
+            onclick="location.href='404.html'">
+         coming soon (az inc)
+    </button>
+    
+        <button class="button95"
+            onclick="location.href='404.html'">
+         Build Logic Tools Suite
+    </button>
+    
+            <button class="button95"
+            onclick="location.href='/tools/BLsuite.html'">
+         Build Logic Tools Suite
+    </button>
+    
+    
+    <button class="button95"
+            onclick="openPopup('services')">
+        placeholder
+    </button>
+
+    <button class="button95"
+            onclick="openPopup('news')">
+        placeholder2
+    </button>
+
 </div>
 
-<div class="card">
-  <h3>Bots</h3>
-  <p>Free discord bots by me</p>
-  <a href="https://azwqxr.github.io/bots.html" class="download-btn" target="_blank">Go</a>
+<!-- Services Popup -->
+<div class="popup" id="services"
+     style="top:120px;left:100px;">
+    <div class="popup-title">
+        <span>placeholder</span>
+        <span class="close"
+              onclick="closePopup('services')">X</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="embed-box">
+            placeholder for embed or something
+        </div>
+    </div>
 </div>
 
-  <div class="card">
-  <h3>azwqxr incorporated</h3>
-  <p>"we do stuff for money"</p>
-  <a href="https://azwqxr.neocities.org" class="download-btn" target="_blank">Go</a>
+<!-- News Popup -->
+<div class="popup" id="news"
+     style="top:180px;left:220px;">
+    <div class="popup-title">
+        <span>placeholder2</span>
+        <span class="close"
+              onclick="closePopup('news')">X</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="embed-box">
+            Hello World!
+        </div>
+    </div>
 </div>
 
-<div class="card">
-  <h3>Build Logic Tools Suite</h3>
-  <p>"verified 100% works"</p>
-  <a href="https://azwqxr.github.io/tools/BLsuite" class="download-btn" target="_blank">Go</a>
-</div>
-
-<div class="card">
-  <h3>azwqxrOS Docs</h3>
-  <p>help & docs for services</p>
-  <a href="https://azwqxr.github.io/docs" class="download-btn" target="_blank">Go</a>
-</div>
-
-<div class="card">
-  <h3>azwqxr approved PCs</h3>
-  <p>pcs that i make</p>
-  <a href="https://azwqxr.github.io/pc.html" class="download-btn" target="_blank">Go</a>
-</div>
-
-</section>
-
-<footer>
-  azwqxrs hideout
-</footer>
-
-<!-- SCREENSAVER -->
-<div id="screensaver">
-  <img id="dvdLogo" src="/images/screensaver.png">
+<div class="footer">
+    azwqxr's hideout
 </div>
 
 <script>
-/* ================= THEME SYSTEM (LOCAL STORAGE) ================= */
-
-function applyTheme(theme) {
-  document.body.setAttribute("data-theme", theme);
-
-  const button = document.querySelector(".theme-toggle");
-
-  if (theme === "dark") {
-    button.textContent = "let there be light";
-  } else {
-    button.textContent = "ez to read mode";
-  }
-
-  localStorage.setItem("theme", theme);
+function openPopup(id){
+    document.getElementById(id).style.display = "block";
 }
 
-function toggleTheme() {
-  const current = document.body.getAttribute("data-theme");
-  const newTheme = current === "dark" ? "light" : "dark";
-  applyTheme(newTheme);
+function closePopup(id){
+    document.getElementById(id).style.display = "none";
 }
+</script>
 
-/* Load saved theme */
-window.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("theme") || "light";
-  applyTheme(saved);
-});
-
+<script>
+  
 /* ================= SCREENSAVER ================= */
 
 let timer, active = false;
