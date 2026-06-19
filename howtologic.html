@@ -1,17 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <meta property="og:title" content="how to logic" />
-  <meta property="og:description" content="every how to logic video ever made" />
-  <meta property="og:url" content="https://azwqxr.github.io/howtologic" />
-  <meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png" />
-  <meta name="theme-color" content="#00bb00" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:title" content="how to logic">
+<meta property="og:description" content="every how to logic video ever made">
+<meta property="og:url" content="https://azwqxr.github.io/howtologic">
+<meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png">
+<meta name="theme-color" content="#00bb00">
+
 <title>how to logic</title>
 
 <style>
+:root{
+    --accent:#00aa00;
+    --bg:#c0c0c0;
+}
+
+*{
+    box-sizing:border-box;
+    font-family:"MS Sans Serif",Tahoma,sans-serif;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:#000;
+}
+
+/* TOP BAR */
+
+.topbar{
+    height:42px;
+    background:#808080;
+    border-bottom:2px solid #404040;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+}
+
+.company-title{
+    color:white;
+    font-weight:bold;
+}
+
+/* MAIN WINDOW */
+
+.window{
+    width:min(900px,95%);
+    margin:30px auto;
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
+}
+
+.title-bar{
+    background:linear-gradient(
+        to right,
+        var(--accent),
+        #006600
+    );
+    color:white;
+    padding:4px 8px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+}
+
+.window-body{
+    padding:20px;
+}
+
+.button95{
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
+    padding:8px 16px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:4px;
+}
+
+.button95:active{
+    border-top:2px solid #404040;
+    border-left:2px solid #404040;
+    border-right:2px solid white;
+    border-bottom:2px solid white;
+}
+
+/* POPUPS */
+
 .popup{
     position:fixed;
     top:50%;
@@ -41,16 +124,22 @@
     font-weight:bold;
 }
 
+.close{
+    cursor:pointer;
+    padding:0 6px;
+    user-select:none;
+}
+
 .popup-body{
     padding:10px;
 }
 
 .embed-box{
     width:100%;
-    aspect-ratio:16/9;
+    aspect-ratio:16 / 9;
+    background:black;
     border:2px inset gray;
     overflow:hidden;
-    background:black;
 }
 
 .embed-box iframe{
@@ -59,14 +148,30 @@
     border:none;
 }
 
-.close{
-    cursor:pointer;
+.footer{
+    text-align:center;
+    margin:20px;
+    color:#444;
+}
+
+/* SCREENSAVER */
+
+#screensaver{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:none;
+    z-index:9999;
+}
+
+#screensaver img{
+    position:absolute;
+    width:150px;
     user-select:none;
-    padding:0 6px;
+    pointer-events:none;
 }
 </style>
 </head>
-
 <body>
 
 <div class="topbar">
@@ -78,34 +183,31 @@
 <div class="window">
     <div class="title-bar">
         <span>how_to_logic.html</span>
-        <span>--  ■  X</span>
+        <span>— □ X</span>
     </div>
 
-<div style="margin-top:20px;">
+    <div class="window-body">
 
-    <button class="button95"
-            onclick="openPopup('memory')">
-        memory
+        <button class="button95" onclick="openPopup('memory')">
+            memory
+        </button>
 
-    </button>
+        <button class="button95" onclick="openPopup('memory11')">
+            memory1.1
+        </button>
 
-    <button class="button95"
-            onclick="openPopup('memory1.1')">
-        memory1.1
-    </button>
+        <button class="button95" onclick="openPopup('rand')">
+            rand
+        </button>
 
-      <button class="button95"
-            onclick="openPopup('rand')">
-        rand
-    </button>
+        <button class="button95" onclick="openPopup('demux')">
+            demux
+        </button>
 
-        <button class="button95"
-            onclick="openPopup('demux')">
-        demux
-    </button>
-
-  
+    </div>
 </div>
+
+<!-- MEMORY -->
 
 <div class="popup" id="memory">
     <div class="popup-title">
@@ -124,22 +226,26 @@
     </div>
 </div>
 
-<div class="popup" id="memory1.1">
+<!-- MEMORY 1.1 -->
+
+<div class="popup" id="memory11">
     <div class="popup-title">
-        <span>memory 1.1</span>
-        <span class="close" onclick="closePopup('memory1.1')">X</span>
+        <span>memory1.1</span>
+        <span class="close" onclick="closePopup('memory11')">X</span>
     </div>
 
     <div class="popup-body">
         <div class="embed-box">
             <iframe
                 src="https://www.youtube.com/embed/t-31yWWF5TE"
-                title="memory 1.1"
+                title="memory1.1"
                 allowfullscreen>
             </iframe>
         </div>
     </div>
 </div>
+
+<!-- RAND -->
 
 <div class="popup" id="rand">
     <div class="popup-title">
@@ -157,6 +263,8 @@
         </div>
     </div>
 </div>
+
+<!-- DEMUX -->
 
 <div class="popup" id="demux">
     <div class="popup-title">
@@ -179,13 +287,15 @@
     azwqxr's hideout
 </div>
 
-  <div id="screensaver">
+<!-- SCREENSAVER -->
+
+<div id="screensaver">
     <img
         id="dvdLogo"
         src="https://azwqxr.github.io/images/screensaver.png"
         alt="DVD Logo">
 </div>
-  
+
 <script>
 function openPopup(id){
     const popup = document.getElementById(id);
@@ -200,54 +310,70 @@ function closePopup(id){
         popup.style.display = "none";
     }
 }
-</script>
 
-<script>
-  
-/* ================= SCREENSAVER ================= */
+/* SCREENSAVER */
 
-let timer, active = false;
+let timer;
+let active = false;
+
 const saver = document.getElementById("screensaver");
 const logo = document.getElementById("dvdLogo");
 
-let x = 100, y = 100, dx = 2, dy = 2;
+let x = 100;
+let y = 100;
+let dx = 2;
+let dy = 2;
 
-function resetTimer() {
-  clearTimeout(timer);
-  if (active) stopSaver();
-  timer = setTimeout(startSaver, 15000);
+function resetTimer(){
+    clearTimeout(timer);
+
+    if(active){
+        stopSaver();
+    }
+
+    timer = setTimeout(startSaver, 15000);
 }
 
-function startSaver() {
-  saver.style.display = "block";
-  document.body.style.overflow = "hidden";
-  active = true;
-  animate();
+function startSaver(){
+    saver.style.display = "block";
+    document.body.style.overflow = "hidden";
+    active = true;
+    animate();
 }
 
-function stopSaver() {
-  saver.style.display = "none";
-  document.body.style.overflow = "";
-  active = false;
+function stopSaver(){
+    saver.style.display = "none";
+    document.body.style.overflow = "";
+    active = false;
 }
 
-function animate() {
-  if (!active) return;
+function animate(){
+    if(!active) return;
 
-  x += dx;
-  y += dy;
+    x += dx;
+    y += dy;
 
-  if (x < 0 || x + 150 > innerWidth) dx *= -1;
-  if (y < 0 || y + 150 > innerHeight) dy *= -1;
+    if(x < 0 || x + 150 > window.innerWidth){
+        dx *= -1;
+    }
 
-  logo.style.left = x + "px";
-  logo.style.top = y + "px";
+    if(y < 0 || y + 150 > window.innerHeight){
+        dy *= -1;
+    }
 
-  requestAnimationFrame(animate);
+    logo.style.left = x + "px";
+    logo.style.top = y + "px";
+
+    requestAnimationFrame(animate);
 }
 
-["mousemove", "keydown", "mousedown", "touchstart"].forEach(e => {
-  document.addEventListener(e, resetTimer);
+[
+    "mousemove",
+    "keydown",
+    "mousedown",
+    "touchstart"
+].forEach(eventName=>{
+    document.addEventListener(eventName, resetTimer);
 });
 
 resetTimer();
