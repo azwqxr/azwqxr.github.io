@@ -12,114 +12,12 @@
 <title>how to logic</title>
 
 <style>
-:root{
-    --accent:#00aa00;
-    --bg:#c0c0c0;
-}
-
-*{
-    box-sizing:border-box;
-    font-family: "MS Sans Serif", Tahoma, sans-serif;
-}
-
-body{
-    margin:0;
-    background:var(--bg);
-    color:#000;
-}
-
-/* Top Bar */
-.topbar{
-    height:42px;
-    background:#808080;
-    border-bottom:2px solid #404040;
-    display:flex;
-    align-items:center;
-    padding:0 10px;
-    gap:10px;
-}
-
-.home-btn{
-    text-decoration:none;
-    color:white;
-    background:var(--accent);
-    padding:6px 14px;
-    border:2px outset #00cc00;
-    font-weight:bold;
-}
-
-.home-btn:hover{
-    filter:brightness(1.1);
-}
-
-.company-title{
-    color:white;
-    font-weight:bold;
-}
-
-/* Main Window */
-.window{
-    width:min(900px,95%);
-    margin:30px auto;
-    background:#c0c0c0;
-    border-top:2px solid white;
-    border-left:2px solid white;
-    border-right:2px solid #404040;
-    border-bottom:2px solid #404040;
-}
-
-.title-bar{
-    background:linear-gradient(
-        to right,
-        var(--accent),
-        #006600
-    );
-    color:white;
-    padding:4px 8px;
-    font-weight:bold;
-    display:flex;
-    justify-content:space-between;
-}
-
-.window-body{
-    padding:20px;
-}
-
-.hero{
-    text-align:center;
-}
-
-.hero h1{
-    margin-top:0;
-    color:var(--accent);
-}
-
-.hero p{
-    font-size:18px;
-}
-
-.button95{
-    background:#c0c0c0;
-    border-top:2px solid white;
-    border-left:2px solid white;
-    border-right:2px solid #404040;
-    border-bottom:2px solid #404040;
-    padding:8px 16px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.button95:active{
-    border-top:2px solid #404040;
-    border-left:2px solid #404040;
-    border-right:2px solid white;
-    border-bottom:2px solid white;
-}
-
-/* Popup Windows */
 .popup{
     position:fixed;
-    width:350px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:min(90vw,900px);
     background:#c0c0c0;
     border-top:2px solid white;
     border-left:2px solid white;
@@ -139,12 +37,8 @@ body{
     padding:4px 8px;
     display:flex;
     justify-content:space-between;
+    align-items:center;
     font-weight:bold;
-}
-
-.close{
-    cursor:pointer;
-    padding:0 5px;
 }
 
 .popup-body{
@@ -152,34 +46,23 @@ body{
 }
 
 .embed-box{
-    background:white;
+    width:100%;
+    aspect-ratio:16/9;
     border:2px inset gray;
-    height:180px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
     overflow:hidden;
+    background:black;
 }
 
-.footer{
-    text-align:center;
-    margin:20px;
-    color:#444;
+.embed-box iframe{
+    width:100%;
+    height:100%;
+    border:none;
 }
 
-/* SCREENSAVER */
-#screensaver {
-  position: fixed;
-  inset: 0;
-  background: black;
-  display: none;
-  z-index: 9999;
-}
-
-#screensaver img {
-  position: absolute;
-  width: 150px;
+.close{
+    cursor:pointer;
+    user-select:none;
+    padding:0 6px;
 }
 </style>
 </head>
@@ -224,41 +107,70 @@ body{
   
 </div>
 
-<div class="popup" id="memory"
-     style="top:180px;left:220px;">
+<div class="popup" id="memory">
     <div class="popup-title">
-        <span><iframe width="1335" height="751" src="https://www.youtube.com/embed/ggZysIePwVs" title="how to logic: memory | build logic (roblox)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
-        <span class="close"
-              onclick="closePopup('memory')">X</span>
-    </div>
-
-  <div class="popup" id="memory1.1"
-     style="top:180px;left:220px;">
-    <div class="popup-title">
-        <span><iframe width="1389" height="751" src="https://www.youtube.com/embed/t-31yWWF5TE" title="How to logic: Memory 1.1 | Build Logic! (ROBLOX)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
-        <span class="close"
-              onclick="closePopup('memory1.1')">X</span>
-    </div>
-
-    <div class="popup" id="rand"
-     style="top:180px;left:220px;">
-    <div class="popup-title">
-        <span><iframe width="1431" height="751" src="https://www.youtube.com/embed/Xue8Gg8bt7Y" title="how to logic: rand" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
-        <span class="close"
-              onclick="closePopup('rand')">X</span>
-    </div>
-
-<div class="popup" id="demux"
-     style="top:180px;left:220px;">
-    <div class="popup-title">
-        <span><iframe width="1335" height="751" src="https://www.youtube.com/embed/VEN4AfcamQk" title="how to logic: Demuxes | build logic (roblox)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
-        <span class="close"
-              onclick="closePopup('demux')">X</span>
+        <span>memory</span>
+        <span class="close" onclick="closePopup('memory')">X</span>
     </div>
 
     <div class="popup-body">
         <div class="embed-box">
-            Hello World!
+            <iframe
+                src="https://www.youtube.com/embed/ggZysIePwVs"
+                title="memory"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="memory1.1">
+    <div class="popup-title">
+        <span>memory 1.1</span>
+        <span class="close" onclick="closePopup('memory1.1')">X</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="embed-box">
+            <iframe
+                src="https://www.youtube.com/embed/t-31yWWF5TE"
+                title="memory 1.1"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="rand">
+    <div class="popup-title">
+        <span>rand</span>
+        <span class="close" onclick="closePopup('rand')">X</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="embed-box">
+            <iframe
+                src="https://www.youtube.com/embed/Xue8Gg8bt7Y"
+                title="rand"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="demux">
+    <div class="popup-title">
+        <span>demux</span>
+        <span class="close" onclick="closePopup('demux')">X</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="embed-box">
+            <iframe
+                src="https://www.youtube.com/embed/VEN4AfcamQk"
+                title="demux"
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 </div>
@@ -267,13 +179,26 @@ body{
     azwqxr's hideout
 </div>
 
+  <div id="screensaver">
+    <img
+        id="dvdLogo"
+        src="https://azwqxr.github.io/images/screensaver.png"
+        alt="DVD Logo">
+</div>
+  
 <script>
 function openPopup(id){
-    document.getElementById(id).style.display = "block";
+    const popup = document.getElementById(id);
+    if(popup){
+        popup.style.display = "block";
+    }
 }
 
 function closePopup(id){
-    document.getElementById(id).style.display = "none";
+    const popup = document.getElementById(id);
+    if(popup){
+        popup.style.display = "none";
+    }
 }
 </script>
 
