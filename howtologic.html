@@ -1,101 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-Source - https://stackoverflow.com/a/66084540
-Posted by user, modified by community. See post 'Timeline' for change history
-Retrieved 2026-04-18, License - CC BY-SA 4.0
--->
-
-<meta property="og:title" content="how to logic">
-<meta property="og:description" content="how to do logic in build logic">
-<meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png">
-  <meta name="theme-color" content="#28a745">
+  
+  <meta property="og:title" content="how to logic" />
+  <meta property="og:description" content="every how to logic video ever made" />
+  <meta property="og:url" content="https://azwqxr.github.io/howtologic" />
+  <meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png" />
+  <meta name="theme-color" content="#00bb00" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Logic</title>
+<title>how to logic</title>
 
 <style>
-:root {
-  --accent: #28a745;
-  --bg: #ffffff;
-  --text: #333;
-  --card: #f9f9f9;
+:root{
+    --accent:#00aa00;
+    --bg:#c0c0c0;
 }
 
-[data-theme="dark"] {
-  --bg: #1e1e1e;
-  --text: #f5f5f5;
-  --card: #2c2c2c;
+*{
+    box-sizing:border-box;
+    font-family: "MS Sans Serif", Tahoma, sans-serif;
 }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+body{
+    margin:0;
+    background:var(--bg);
+    color:#000;
 }
 
-/* HEADER */
-header {
-  background: var(--accent);
-  color: white;
-  text-align: center;
-  padding: 3rem 1rem;
-  position: relative;
+/* Top Bar */
+.topbar{
+    height:42px;
+    background:#808080;
+    border-bottom:2px solid #404040;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    gap:10px;
 }
 
-/* THEME BUTTON */
-.theme-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 20;
-  padding: 0.4rem 0.8rem;
-  background: white;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
+.home-btn{
+    text-decoration:none;
+    color:white;
+    background:var(--accent);
+    padding:6px 14px;
+    border:2px outset #00cc00;
+    font-weight:bold;
 }
 
-/* MAIN CONTENT */
-section {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
+.home-btn:hover{
+    filter:brightness(1.1);
 }
 
-.card {
-  background: var(--card);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.company-title{
+    color:white;
+    font-weight:bold;
 }
 
-.download-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: var(--accent);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
+/* Main Window */
+.window{
+    width:min(900px,95%);
+    margin:30px auto;
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #f0f0f0;
+.title-bar{
+    background:linear-gradient(
+        to right,
+        var(--accent),
+        #006600
+    );
+    color:white;
+    padding:4px 8px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
 }
 
-[data-theme="dark"] footer {
-  background: #111;
-  color: #ccc;
+.window-body{
+    padding:20px;
+}
+
+.hero{
+    text-align:center;
+}
+
+.hero h1{
+    margin-top:0;
+    color:var(--accent);
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.button95{
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
+    padding:8px 16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.button95:active{
+    border-top:2px solid #404040;
+    border-left:2px solid #404040;
+    border-right:2px solid white;
+    border-bottom:2px solid white;
+}
+
+/* Popup Windows */
+.popup{
+    position:fixed;
+    width:350px;
+    background:#c0c0c0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #404040;
+    border-bottom:2px solid #404040;
+    display:none;
+    z-index:1000;
+}
+
+.popup-title{
+    background:linear-gradient(
+        to right,
+        var(--accent),
+        #006600
+    );
+    color:white;
+    padding:4px 8px;
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+}
+
+.close{
+    cursor:pointer;
+    padding:0 5px;
+}
+
+.popup-body{
+    padding:10px;
+}
+
+.embed-box{
+    background:white;
+    border:2px inset gray;
+    height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.footer{
+    text-align:center;
+    margin:20px;
+    color:#444;
 }
 
 /* SCREENSAVER */
@@ -114,60 +184,149 @@ footer {
 </style>
 </head>
 
-<body data-theme="light">
+<body>
 
-<header>
+<div class="topbar">
+    <div class="company-title">
+        azwqxr's hideout - how to logic
+    </div>
+</div>
 
-<button class="theme-toggle" onclick="toggleTheme()">ez to read mode</button>
+<div class="window">
+    <div class="title-bar">
+        <span>how_to_logic.html</span>
+        <span>--  ■  X</span>
+    </div>
 
-<h1>how to logic</h1>
-<p>how to logic in build logic</p>
+<div style="margin-top:20px;">
 
-</header>
+    <button class="button95"
+            onclick="openPopup('memory')">
+        memory
 
-<section>
+    </button>
 
-<iframe width="1335" height="751" src="https://www.youtube.com/embed/ggZysIePwVs" title="how to logic: memory | build logic (roblox)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="1389" height="751" src="https://www.youtube.com/embed/t-31yWWF5TE" title="How to logic: Memory 1.1 | Build Logic! (ROBLOX)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="1431" height="751" src="https://www.youtube.com/embed/Xue8Gg8bt7Y" title="how to logic: rand" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="1335" height="751" src="https://www.youtube.com/embed/VEN4AfcamQk" title="how to logic: Demuxes | build logic (roblox)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <button class="button95"
+            onclick="openPopup('memory1.1')">
+        memory1.1
+    </button>
 
-</section>
+      <button class="button95"
+            onclick="openPopup('rand')">
+        rand
+    </button>
 
-<footer>
-  azwqxrs hideout
-</footer>
+        <button class="button95"
+            onclick="openPopup('demux')">
+        demux
+    </button>
 
+  
+</div>
+
+<div class="popup" id="memory"
+     style="top:180px;left:220px;">
+    <div class="popup-title">
+        <span><iframe width="1335" height="751" src="https://www.youtube.com/embed/ggZysIePwVs" title="how to logic: memory | build logic (roblox)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
+        <span class="close"
+              onclick="closePopup('memory')">X</span>
+    </div>
+
+  <div class="popup" id="memory1.1"
+     style="top:180px;left:220px;">
+    <div class="popup-title">
+        <span><iframe width="1389" height="751" src="https://www.youtube.com/embed/t-31yWWF5TE" title="How to logic: Memory 1.1 | Build Logic! (ROBLOX)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
+        <span class="close"
+              onclick="closePopup('memory1.1')">X</span>
+    </div>
+
+    <div class="popup" id="rand"
+     style="top:180px;left:220px;">
+    <div class="popup-title">
+        <span><iframe width="1431" height="751" src="https://www.youtube.com/embed/Xue8Gg8bt7Y" title="how to logic: rand" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
+        <span class="close"
+              onclick="closePopup('rand')">X</span>
+    </div>
+
+<div class="popup" id="demux"
+     style="top:180px;left:220px;">
+    <div class="popup-title">
+        <span><iframe width="1335" height="751" src="https://www.youtube.com/embed/VEN4AfcamQk" title="how to logic: Demuxes | build logic (roblox)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
+        <span class="close"
+              onclick="closePopup('demux')">X</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="embed-box">
+            Hello World!
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    azwqxr's hideout
+</div>
 
 <script>
-/* ================= THEME SYSTEM (LOCAL STORAGE) ================= */
-
-function applyTheme(theme) {
-  document.body.setAttribute("data-theme", theme);
-
-  const button = document.querySelector(".theme-toggle");
-
-  if (theme === "dark") {
-    button.textContent = "let there be light";
-  } else {
-    button.textContent = "ez to read mode";
-  }
-
-  localStorage.setItem("theme", theme);
+function openPopup(id){
+    document.getElementById(id).style.display = "block";
 }
 
-function toggleTheme() {
-  const current = document.body.getAttribute("data-theme");
-  const newTheme = current === "dark" ? "light" : "dark";
-  applyTheme(newTheme);
+function closePopup(id){
+    document.getElementById(id).style.display = "none";
+}
+</script>
+
+<script>
+  
+/* ================= SCREENSAVER ================= */
+
+let timer, active = false;
+const saver = document.getElementById("screensaver");
+const logo = document.getElementById("dvdLogo");
+
+let x = 100, y = 100, dx = 2, dy = 2;
+
+function resetTimer() {
+  clearTimeout(timer);
+  if (active) stopSaver();
+  timer = setTimeout(startSaver, 15000);
 }
 
-/* Load saved theme */
-window.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("theme") || "light";
-  applyTheme(saved);
+function startSaver() {
+  saver.style.display = "block";
+  document.body.style.overflow = "hidden";
+  active = true;
+  animate();
+}
+
+function stopSaver() {
+  saver.style.display = "none";
+  document.body.style.overflow = "";
+  active = false;
+}
+
+function animate() {
+  if (!active) return;
+
+  x += dx;
+  y += dy;
+
+  if (x < 0 || x + 150 > innerWidth) dx *= -1;
+  if (y < 0 || y + 150 > innerHeight) dy *= -1;
+
+  logo.style.left = x + "px";
+  logo.style.top = y + "px";
+
+  requestAnimationFrame(animate);
+}
+
+["mousemove", "keydown", "mousedown", "touchstart"].forEach(e => {
+  document.addEventListener(e, resetTimer);
 });
 
+resetTimer();
+</script>
 
 </body>
 </html>
