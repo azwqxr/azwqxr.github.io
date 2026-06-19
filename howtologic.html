@@ -8,9 +8,11 @@
 <meta property="og:description" content="every how to logic video ever made">
 <meta property="og:url" content="https://azwqxr.github.io/howtologic">
 <meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png">
-<meta name="theme-color" content="#00bb00">
+<meta name="theme-color" content="#00aa00">
 
 <title>how to logic</title>
+
+<link rel="stylesheet" href="https://unpkg.com/winbox@0.2.82/dist/css/winbox.min.css">
 
 <style>
 :root{
@@ -93,65 +95,36 @@ body{
     border-bottom:2px solid white;
 }
 
-/* POPUPS */
-
-.popup{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:min(90vw,900px);
-    background:#c0c0c0;
-    border-top:2px solid white;
-    border-left:2px solid white;
-    border-right:2px solid #404040;
-    border-bottom:2px solid #404040;
-    display:none;
-    z-index:1000;
-}
-
-.popup-title{
-    background:linear-gradient(
-        to right,
-        var(--accent),
-        #006600
-    );
-    color:white;
-    padding:4px 8px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-weight:bold;
-}
-
-.close{
-    cursor:pointer;
-    padding:0 6px;
-    user-select:none;
-}
-
-.popup-body{
-    padding:10px;
-}
-
-.embed-box{
-    width:100%;
-    aspect-ratio:16 / 9;
-    background:black;
-    border:2px inset gray;
-    overflow:hidden;
-}
-
-.embed-box iframe{
-    width:100%;
-    height:100%;
-    border:none;
-}
-
 .footer{
     text-align:center;
     margin:20px;
     color:#444;
+}
+
+/* WINBOX CUSTOM THEME */
+
+.winbox.green{
+    background:#00aa00 !important;
+}
+
+.winbox.green .wb-header{
+    background:linear-gradient(
+        to right,
+        #00aa00,
+        #006600
+    ) !important;
+    color:white !important;
+}
+
+.winbox.green .wb-body{
+    background:#c0c0c0 !important;
+    padding:0 !important;
+}
+
+.video-frame{
+    width:100%;
+    height:100%;
+    border:none;
 }
 
 /* SCREENSAVER */
@@ -161,7 +134,7 @@ body{
     inset:0;
     background:black;
     display:none;
-    z-index:9999;
+    z-index:999999;
 }
 
 #screensaver img{
@@ -181,6 +154,7 @@ body{
 </div>
 
 <div class="window">
+
     <div class="title-bar">
         <span>how_to_logic.html</span>
         <span>— □ X</span>
@@ -188,99 +162,28 @@ body{
 
     <div class="window-body">
 
-        <button class="button95" onclick="openPopup('memory')">
+        <button class="button95"
+                onclick="openVideo('memory')">
             memory
         </button>
 
-        <button class="button95" onclick="openPopup('memory11')">
+        <button class="button95"
+                onclick="openVideo('memory11')">
             memory1.1
         </button>
 
-        <button class="button95" onclick="openPopup('rand')">
+        <button class="button95"
+                onclick="openVideo('rand')">
             rand
         </button>
 
-        <button class="button95" onclick="openPopup('demux')">
+        <button class="button95"
+                onclick="openVideo('demux')">
             demux
         </button>
 
     </div>
-</div>
 
-<!-- MEMORY -->
-
-<div class="popup" id="memory">
-    <div class="popup-title">
-        <span>memory</span>
-        <span class="close" onclick="closePopup('memory')">X</span>
-    </div>
-
-    <div class="popup-body">
-        <div class="embed-box">
-            <iframe
-                src="https://www.youtube.com/embed/ggZysIePwVs"
-                title="memory"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</div>
-
-<!-- MEMORY 1.1 -->
-
-<div class="popup" id="memory11">
-    <div class="popup-title">
-        <span>memory1.1</span>
-        <span class="close" onclick="closePopup('memory11')">X</span>
-    </div>
-
-    <div class="popup-body">
-        <div class="embed-box">
-            <iframe
-                src="https://www.youtube.com/embed/t-31yWWF5TE"
-                title="memory1.1"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</div>
-
-<!-- RAND -->
-
-<div class="popup" id="rand">
-    <div class="popup-title">
-        <span>rand</span>
-        <span class="close" onclick="closePopup('rand')">X</span>
-    </div>
-
-    <div class="popup-body">
-        <div class="embed-box">
-            <iframe
-                src="https://www.youtube.com/embed/Xue8Gg8bt7Y"
-                title="rand"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</div>
-
-<!-- DEMUX -->
-
-<div class="popup" id="demux">
-    <div class="popup-title">
-        <span>demux</span>
-        <span class="close" onclick="closePopup('demux')">X</span>
-    </div>
-
-    <div class="popup-body">
-        <div class="embed-box">
-            <iframe
-                src="https://www.youtube.com/embed/VEN4AfcamQk"
-                title="demux"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
 </div>
 
 <div class="footer">
@@ -296,19 +199,63 @@ body{
         alt="DVD Logo">
 </div>
 
-<script>
-function openPopup(id){
-    const popup = document.getElementById(id);
-    if(popup){
-        popup.style.display = "block";
-    }
-}
+<script src="https://unpkg.com/winbox@0.2.82/dist/winbox.bundle.min.js"></script>
 
-function closePopup(id){
-    const popup = document.getElementById(id);
-    if(popup){
-        popup.style.display = "none";
+<script>
+/* VIDEO DATABASE */
+
+const videos = {
+
+    memory: {
+        title: "memory",
+        src: "https://www.youtube.com/embed/ggZysIePwVs"
+    },
+
+    memory11: {
+        title: "memory1.1",
+        src: "https://www.youtube.com/embed/t-31yWWF5TE"
+    },
+
+    rand: {
+        title: "rand",
+        src: "https://www.youtube.com/embed/Xue8Gg8bt7Y"
+    },
+
+    demux: {
+        title: "demux",
+        src: "https://www.youtube.com/embed/VEN4AfcamQk"
     }
+};
+
+/* OPEN VIDEO WINDOW */
+
+function openVideo(id){
+
+    const video = videos[id];
+
+    if(!video) return;
+
+    new WinBox({
+        title: video.title,
+
+        class: ["green"],
+
+        width: "80%",
+        height: "70%",
+
+        x: "center",
+        y: "center",
+
+        html: `
+            <iframe
+                class="video-frame"
+                src="${video.src}"
+                title="${video.title}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        `
+    });
 }
 
 /* SCREENSAVER */
@@ -321,10 +268,12 @@ const logo = document.getElementById("dvdLogo");
 
 let x = 100;
 let y = 100;
+
 let dx = 2;
 let dy = 2;
 
 function resetTimer(){
+
     clearTimeout(timer);
 
     if(active){
@@ -335,19 +284,25 @@ function resetTimer(){
 }
 
 function startSaver(){
+
     saver.style.display = "block";
     document.body.style.overflow = "hidden";
+
     active = true;
+
     animate();
 }
 
 function stopSaver(){
+
     saver.style.display = "none";
     document.body.style.overflow = "";
+
     active = false;
 }
 
 function animate(){
+
     if(!active) return;
 
     x += dx;
@@ -369,11 +324,22 @@ function animate(){
 
 [
     "mousemove",
-    "keydown",
     "mousedown",
+    "keydown",
     "touchstart"
-].forEach(eventName=>{
-    document.addEventListener(eventName, resetTimer);
+].forEach(eventName => {
+
+    document.addEventListener(
+        eventName,
+        resetTimer
+    );
+
+});
+
+document.addEventListener("click", () => {
+    if(active){
+        stopSaver();
+    }
 });
 
 resetTimer();
