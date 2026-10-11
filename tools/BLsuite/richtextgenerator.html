@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Build Logic RichText Generator with the complete BuilderIcons catalogue.">
 <title>build logic richtext generator</title>
-
+<script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
 <style>
 :root {
     color-scheme: dark;
@@ -16,218 +17,55 @@
     --muted: #999999;
     --accent: #ffa200;
 }
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    background: var(--background);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.container {
-    width: min(920px, 100%);
-    margin: 0 auto;
-    padding: 28px 20px 48px;
-}
-
-h1 {
-    text-align: center;
-    font-size: clamp(23px, 4vw, 30px);
-    margin: 10px 0 28px;
-}
-
-h2 {
-    font-size: 16px;
-    margin: 0 0 12px;
-}
-
-.section {
-    margin-top: 20px;
-}
-
-.toolbar,
-.builder-icons {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    padding: 12px;
-    background: var(--panel);
-    border: 1px solid #242424;
-    border-radius: 8px;
-}
-
-.color {
-    position: relative;
-    width: 25px;
-    height: 25px;
-    padding: 0;
-    border: 1px solid #555;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform .12s, border-color .12s;
-}
-
-.color:hover {
-    transform: scale(1.12);
-    border-color: white;
-}
-
-.color:focus-visible,
-.btn:focus-visible,
-select:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
-
-.btn {
-    padding: 8px 11px;
-    background: #222;
-    color: white;
-    border: 1px solid #393939;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.btn:hover {
-    background: #333;
-}
-
-.btn.primary {
-    background: #8b5700;
-    border-color: #c78313;
-}
-
-.btn.primary:hover {
-    background: #a36a00;
-}
-
-label {
-    display: block;
-    margin-bottom: 7px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-textarea,
-select,
-input[type="text"] {
-    width: 100%;
-    padding: 11px;
-    background: var(--field);
-    color: white;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font: 14px Arial, sans-serif;
-}
-
-textarea {
-    min-height: 110px;
-    resize: vertical;
-    line-height: 1.6;
-}
-
-select {
-    cursor: pointer;
-}
-
-.hint {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.5;
-    margin-top: 7px;
-}
-
-.builder-icons .search {
-    flex: 1 1 200px;
-    min-width: 0;
-}
-
-.builder-icons .icon-picker {
-    flex: 1 1 180px;
-    min-width: 0;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin: 0;
-    white-space: nowrap;
-}
-
-.checkbox-label input {
-    accent-color: var(--accent);
-}
-
-.preview {
-    min-height: 75px;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-    line-height: 1.7;
-    font-size: 18px;
-}
-
-.box {
-    padding: 14px;
-    background: var(--field);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-}
-
-.output {
-    min-height: 95px;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    font-family: Consolas, "Courier New", monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    user-select: text;
-}
-
-.row-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.status {
-    min-height: 18px;
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 8px;
-}
-
-@media (max-width: 520px) {
-    .container {
-        padding: 18px 12px 32px;
-    }
-
-    .toolbar {
-        gap: 7px;
-    }
-
-    .btn {
-        padding: 8px;
-    }
-}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--text); font-family: Arial, Helvetica, sans-serif; }
+.container { width: min(1000px, 100%); margin: 0 auto; padding: 28px 20px 48px; }
+h1 { text-align: center; font-size: clamp(23px, 4vw, 30px); margin: 10px 0 8px; }
+h2 { font-size: 16px; margin: 0 0 12px; }
+.section { margin-top: 20px; }
+.toolbar, .builder-icons { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px; background: var(--panel); border: 1px solid #242424; border-radius: 8px; }
+.color { width: 25px; height: 25px; padding: 0; border: 1px solid #555; border-radius: 5px; cursor: pointer; transition: transform .12s, border-color .12s; }
+.color:hover { transform: scale(1.12); border-color: white; }
+.color:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn { padding: 8px 11px; background: #222; color: white; border: 1px solid #393939; border-radius: 6px; cursor: pointer; font-size: 13px; }
+.btn:hover { background: #333; }
+.btn.primary { background: #8b5700; border-color: #c78313; }
+.btn.primary:hover { background: #a36a00; }
+label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 600; }
+textarea, select, input[type="text"] { width: 100%; padding: 11px; background: var(--field); color: white; border: 1px solid var(--border); border-radius: 6px; font: 14px Arial, sans-serif; }
+textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
+select { cursor: pointer; }
+.hint { color: var(--muted); font-size: 12px; line-height: 1.5; margin-top: 7px; }
+.builder-icons .search { flex: 2 1 220px; min-width: 0; }
+.builder-icons .icon-picker { flex: 1 1 220px; min-width: 0; }
+.checkbox-label { display: flex; align-items: center; gap: 7px; margin: 0; white-space: nowrap; }
+.checkbox-label input { accent-color: var(--accent); }
+.preview { min-height: 75px; overflow-wrap: anywhere; white-space: pre-wrap; line-height: 1.7; font-size: 18px; }
+.box { padding: 14px; background: var(--field); border: 1px solid var(--border); border-radius: 6px; }
+.output { min-height: 95px; white-space: pre-wrap; overflow-wrap: anywhere; font-family: Consolas, "Courier New", monospace; font-size: 13px; line-height: 1.6; user-select: text; }
+.row-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+.status { min-height: 18px; color: var(--muted); font-size: 12px; margin-top: 8px; }
+.catalog-head { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:10px 0; }
+.catalog-head .count { color:var(--muted); font-size:12px; margin-right:auto; }
+.variant-toggle { display:flex; gap:4px; padding:3px; border:1px solid var(--border); border-radius:7px; background:var(--field); }
+.variant-toggle button { color:var(--muted); background:transparent; border:0; border-radius:5px; padding:7px 10px; cursor:pointer; }
+.variant-toggle button.active { color:#111; background:var(--accent); }
+.icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:8px; max-height:390px; overflow:auto; padding:2px; }
+.icon-card { min-width:0; border:1px solid var(--border); background:var(--field); border-radius:7px; padding:10px; cursor:pointer; text-align:left; color:var(--text); }
+.icon-card:hover, .icon-card.selected { border-color:var(--accent); background:#211a0e; }
+.icon-card .name { font:12px Consolas,monospace; overflow-wrap:anywhere; margin-bottom:8px; }
+.icon-card .glyph { color:var(--accent); font-size:22px; min-height:28px; }
+.icon-card .variants { color:var(--muted); font-size:10px; margin-top:5px; }
+.catalog-status { color:var(--muted); font-size:12px; padding:12px 2px; line-height:1.5; }
+hr { border:0; border-top:1px solid var(--border); margin:12px 0; }
+@media (max-width: 520px) { .container { padding:18px 12px 32px; } .toolbar { gap:7px; } .btn { padding:8px; } .icon-grid { grid-template-columns:repeat(auto-fill,minmax(125px,1fr)); } }
 </style>
 </head>
-
 <body>
 <main class="container">
-
     <h1>build logic richtext generator</h1>
-      <h1>--- V2 ---</h1>
-    <p class="hint">                        azwqxr incorporated!</p>
+    <h1 style="font-size:17px;margin-top:0">--- V2 ---</h1>
+    <p class="hint">azwqxr incorporated!</p>
 
     <section class="section">
         <h2>Formatting</h2>
@@ -248,7 +86,6 @@ select {
             <button class="color" style="background:#FF55FF" data-code="§d" title="Light Purple"></button>
             <button class="color" style="background:#FFFF55" data-code="§e" title="Yellow"></button>
             <button class="color" style="background:#FFFFFF" data-code="§f" title="White"></button>
-
             <button class="btn" data-code="§l">Bold</button>
             <button class="btn" data-code="§n">Underline</button>
             <button class="btn" data-code="§o">Italic</button>
@@ -262,163 +99,106 @@ select {
     <section class="section">
         <label for="input">Minecraft formatting:</label>
         <textarea id="input" spellcheck="false">§4hello §2world §r!</textarea>
-        <p class="hint">Use § codes (for minecraft formatting). Converted into RichText in the output at bottom of page.</p>
+        <p class="hint">Use § codes for Minecraft formatting. They are converted into Roblox RichText below.</p>
     </section>
 
     <section class="section">
         <label for="fontSelect">Other options — font:</label>
         <select id="fontSelect">
             <option value="">Default</option>
-            <option value="Legacy">Legacy</option>
-            <option value="Arial">Arial</option>
-            <option value="ArialBold">ArialBold</option>
-            <option value="SourceSans">SourceSans</option>
-            <option value="SourceSansBold">SourceSansBold</option>
-            <option value="SourceSansLight">SourceSansLight</option>
-            <option value="SourceSansItalic">SourceSansItalic</option>
-            <option value="SourceSansSemibold">SourceSansSemibold</option>
-            <option value="Gotham">Gotham</option>
-            <option value="GothamMedium">GothamMedium</option>
-            <option value="GothamSemibold">GothamSemibold</option>
-            <option value="GothamBold">GothamBold</option>
-            <option value="GothamBlack">GothamBlack</option>
-            <option value="Cartoon">Cartoon</option>
-            <option value="Code">Code</option>
-            <option value="Highway">Highway</option>
-            <option value="SciFi">SciFi</option>
-            <option value="Arcade">Arcade</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Antique">Antique</option>
-            <option value="Bodoni">Bodoni</option>
-            <option value="Garamond">Garamond</option>
+            <option value="Legacy">Legacy</option><option value="Arial">Arial</option><option value="ArialBold">ArialBold</option>
+            <option value="SourceSans">SourceSans</option><option value="SourceSansBold">SourceSansBold</option><option value="SourceSansLight">SourceSansLight</option>
+            <option value="SourceSansItalic">SourceSansItalic</option><option value="SourceSansSemibold">SourceSansSemibold</option>
+            <option value="Gotham">Gotham</option><option value="GothamMedium">GothamMedium</option><option value="GothamSemibold">GothamSemibold</option>
+            <option value="GothamBold">GothamBold</option><option value="GothamBlack">GothamBlack</option><option value="Cartoon">Cartoon</option>
+            <option value="Code">Code</option><option value="Highway">Highway</option><option value="SciFi">SciFi</option><option value="Arcade">Arcade</option>
+            <option value="Fantasy">Fantasy</option><option value="Antique">Antique</option><option value="Bodoni">Bodoni</option><option value="Garamond">Garamond</option>
         </select>
         <p class="hint">The selected font is added to the generated RichText and applied to the whole preview.</p>
     </section>
 
     <section class="section">
-        <h2>BuilderIcons</h2>
-
+        <h2>BuilderIcons — complete catalogue</h2>
+        <p class="hint">The catalogue is extracted from the same Regular and Filled font files used by BuilderIcons. Search names, filter variants, click an icon to select it, then insert it at the text cursor.</p>
         <div class="builder-icons">
-            <input
-                class="search"
-                type="text"
-                id="iconSearch"
-                placeholder="Search icon names..."
-                autocomplete="off"
-            >
-
-            <select class="icon-picker" id="iconSelect" aria-label="Select BuilderIcon">
-                <option value="studio">studio</option>
-                <option value="roblox">roblox</option>
-                <option value="robux">robux</option>
-                <option value="roblox-plus">roblox-plus</option>
-                <option value="verified-mono">verified-mono</option>
-                <option value="github">github</option>
-                <option value="youtube">youtube</option>
-                <option value="twitch">twitch</option>
-                <option value="twitter">twitter</option>
-                <option value="messenger">messenger</option>
-                <option value="house">house</option>
-                <option value="settings">settings</option>
-                <option value="search">search</option>
-                <option value="bell">bell</option>
-                <option value="gear">gear</option>
-                <option value="friends">friends</option>
-                <option value="backpack">backpack</option>
-                <option value="cloud">cloud</option>
-                <option value="discord">discord</option>
-                <option value="code">code</option>
-                <option value="mouse-button-left">mouse-button-left</option>
-                <option value="square-face-winking">square-face-winking</option>
-                <option value="premium">premium</option>
-                <option value="diamond">diamond</option>
-                <option value="roblox-plus">roblox-plus</option>
-                <option value="nebula">nebula</option>
+            <input class="search" type="text" id="iconSearch" placeholder="Search all icon names..." autocomplete="off">
+            <select id="categorySelect" aria-label="Filter icon category" style="flex:1 1 170px;width:auto">
+                <option value="all">All categories</option>
             </select>
-
-            <label class="checkbox-label">
-                <input type="checkbox" id="iconFilled">
-                Filled
-            </label>
-
-            <button class="btn primary" type="button" id="insertIcon">
-                Insert Icon
-            </button>
+            <select class="icon-picker" id="iconSelect" aria-label="Selected BuilderIcon" disabled>
+                <option>Loading icon catalogue…</option>
+            </select>
+            <label class="checkbox-label"><input type="checkbox" id="iconFilled"> Filled</label>
+            <button class="btn primary" type="button" id="insertIcon" disabled>Insert Icon</button>
         </div>
-
-        <p class="hint">
-            Choose an icon name, then insert it at the text cursor.
-            Enable Filled to use the bold BuilderIcons variant.
-            The icon names here are examples, not a complete icon catalogue.
-        </p>
+        <div class="catalog-head">
+            <span class="count" id="iconCount">Loading the Regular and Filled BuilderIcons fonts…</span>
+            <div class="variant-toggle" id="variantToggle" aria-label="Icon variant filter">
+                <button type="button" class="active" data-variant="both">Both</button>
+                <button type="button" data-variant="reg">Regular</button>
+                <button type="button" data-variant="fill">Filled</button>
+            </div>
+        </div>
+        <div id="catalogStatus" class="catalog-status" role="status" aria-live="polite">Downloading icon fonts and extracting exact icon names…</div>
+        <div id="iconGrid" class="icon-grid"></div>
+        <p class="hint">Roblox displays BuilderIcons through its built-in font. Browser previews may show the icon name as text; the generated Roblox RichText uses the correct BuilderIcons font family. Filled uses <code>&lt;b&gt;</code> around the font tag.</p>
     </section>
 
     <section class="section">
         <label>Preview:</label>
         <div id="preview" class="box preview"></div>
-        <p class="hint">BuilderIcons are Roblox-specific fonts and may appear as ordinary text in your browser preview.</p>
+        <p class="hint">This browser preview approximates text formatting. Roblox-only fonts and BuilderIcons may not render visually in a normal browser.</p>
     </section>
 
     <section class="section">
         <label>Output — Roblox RichText:</label>
         <div id="output" class="box output"></div>
-        <div class="row-actions">
-            <button class="btn" id="copyOutput">Copy RichText</button>
-        </div>
+        <div class="row-actions"><button class="btn" id="copyOutput">Copy RichText</button></div>
         <div class="status" id="status" role="status" aria-live="polite"></div>
     </section>
-
 </main>
 
 <script>
 "use strict";
 
-const BUILDER_ICONS =
-    "rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json";
-
+const BUILDER_ICONS = "rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json";
+const FONT_BASE = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/refs/heads/roblox/LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/Font";
+const FONT_URLS = {
+    reg: FONT_BASE + "/BuilderIcons-Regular.ttf",
+    fill: FONT_BASE + "/BuilderIcons-Filled.ttf"
+};
 const COLORS = {
-    "0": "#000000",
-    "1": "#0000AA",
-    "2": "#00AA00",
-    "3": "#00AAAA",
-    "4": "#AA0000",
-    "5": "#AA00AA",
-    "6": "#FFAA00",
-    "7": "#AAAAAA",
-    "8": "#555555",
-    "9": "#5555FF",
-    "a": "#55FF55",
-    "b": "#55FFFF",
-    "c": "#FF5555",
-    "d": "#FF55FF",
-    "e": "#FFFF55",
-    "f": "#FFFFFF"
+    "0":"#000000","1":"#0000AA","2":"#00AA00","3":"#00AAAA","4":"#AA0000","5":"#AA00AA","6":"#FFAA00","7":"#AAAAAA",
+    "8":"#555555","9":"#5555FF","a":"#55FF55","b":"#55FFFF","c":"#FF5555","d":"#FF55FF","e":"#FFFF55","f":"#FFFFFF"
 };
-
 const PREVIEW_FONTS = {
-    Legacy: "Arial, sans-serif",
-    Arial: "Arial, sans-serif",
-    ArialBold: "Arial Black, Arial, sans-serif",
-    SourceSans: "Arial, sans-serif",
-    SourceSansBold: "Arial, sans-serif",
-    SourceSansLight: "Arial, sans-serif",
-    SourceSansItalic: "Arial, sans-serif",
-    SourceSansSemibold: "Arial, sans-serif",
-    Gotham: "Arial, sans-serif",
-    GothamMedium: "Arial, sans-serif",
-    GothamSemibold: "Arial, sans-serif",
-    GothamBold: "Arial, sans-serif",
-    GothamBlack: "Arial Black, sans-serif",
-    Cartoon: "'Comic Sans MS', cursive",
-    Code: "'Courier New', monospace",
-    Highway: "'Arial Narrow', Arial, sans-serif",
-    SciFi: "Arial, sans-serif",
-    Arcade: "'Courier New', monospace",
-    Fantasy: "Papyrus, fantasy",
-    Antique: "Georgia, serif",
-    Bodoni: "Bodoni, Georgia, serif",
-    Garamond: "Garamond, Georgia, serif"
+    Legacy:"Arial, sans-serif", Arial:"Arial, sans-serif", ArialBold:"Arial Black, Arial, sans-serif",
+    SourceSans:"Arial, sans-serif", SourceSansBold:"Arial, sans-serif", SourceSansLight:"Arial, sans-serif",
+    SourceSansItalic:"Arial, sans-serif", SourceSansSemibold:"Arial, sans-serif", Gotham:"Arial, sans-serif",
+    GothamMedium:"Arial, sans-serif", GothamSemibold:"Arial, sans-serif", GothamBold:"Arial, sans-serif",
+    GothamBlack:"Arial Black, Arial, sans-serif", Cartoon:"'Comic Sans MS', cursive", Code:"'Courier New', monospace",
+    Highway:"'Arial Narrow', Arial, sans-serif", SciFi:"Arial, sans-serif", Arcade:"'Courier New', monospace",
+    Fantasy:"Papyrus, fantasy", Antique:"Georgia, serif", Bodoni:"Bodoni, Georgia, serif", Garamond:"Garamond, Georgia, serif"
 };
+const CATEGORY_ORDER = [
+    "Social Media","PlayStation","Xbox","Avatar & Body","Clothing & Fashion","Makeup","Media Controls",
+    "Communication","Text Formatting","UI Elements","Developer","E-Commerce","Arrows & Navigation","Other"
+];
+const PATTERNS = [
+    {pattern:/^(amazon|android|apple|discord|facebook|figma|github|guilded|instagram|linkedin|messenger|meta|microsoft|slack|tencent|tik-tok|twitch|twitter|we-chat|whatsapp|youtube)/,category:"Social Media"},
+    {pattern:/^playstation|^ps[0-9-]|^ps-/,category:"PlayStation"},
+    {pattern:/^xbox/,category:"Xbox"},
+    {pattern:/^(arm|beard|dot-frame|eyebrow|eyelash|face-|head-|leg|lips|lipstick|nose|person|torso)/,category:"Avatar & Body"},
+    {pattern:/^(backpack|belt|bow-tie|butterfly-wing|clothes|dress|glasses|hat-|helmet|hoodie|jacket|mirror-standing|necklace|pants|purse|shirt|shoe|shorts|skirt|sweater|tshirt|vest|wings)/,category:"Clothing & Fashion"},
+    {pattern:/^(blush|compact-makeup|cosmetic|eye-with-eyeliner|eyeshadow|makeup|mascara|nail-polish|two-makeup)/,category:"Makeup"},
+    {pattern:/^(audio-wave|fast-forward|frame-record|frame-soundwave|loop|music|pause|play|record|rewind|shuffle|skip|speaker|stop-large|stop-small|stop-media|volume)/,category:"Media Controls"},
+    {pattern:/^(envelope|headphones|microphone|paper-airplane|phone|speech|video-camera)/,category:"Communication"},
+    {pattern:/^(four-bars-horizontal|list-bulleted|list-numbered|paragraph|quotation|text-)/,category:"Text Formatting"},
+    {pattern:/^(arrow|caret-small|chevron|dual-arrows|three-chevrons|two-arrows)/,category:"Arrows & Navigation"},
+    {pattern:/^(check|checkmark-square|circle-check|circle-i$|circle-minus|circle-play|circle-plus|circle-question|circle-slash|circle-three-dots|circle-x$|crop|frame-collapsed|frame-corners|frame-expanded|grid$|minus$|minus-small|nine-dots|picture-in-picture|plus-large|plus-small|sidebar|six-dots|square-check|square-minus|squares-grid|stacked-squares|three-bars|three-dots|three-horizontal|three-sliders|three-stacked|two-stacked|two-switches|x$|x-small)/,category:"UI Elements"},
+    {pattern:/^(code|controller|cube-question|cube-vertex|gear|generic-dpad|hack-week|hammer-code|keyboard|lab-beaker|nexus|ro-gro|speedometer|square-bar-graph|square-code|studio|teletype)/,category:"Developer"},
+    {pattern:/^(building-store|gift-|premium|roblox-plus|robux|shopping|tag-sparkle|wallet)/,category:"E-Commerce"}
+];
 
 const input = document.getElementById("input");
 const fontSelect = document.getElementById("fontSelect");
@@ -428,254 +208,306 @@ const status = document.getElementById("status");
 const iconSearch = document.getElementById("iconSearch");
 const iconSelect = document.getElementById("iconSelect");
 const iconFilled = document.getElementById("iconFilled");
+const categorySelect = document.getElementById("categorySelect");
+const iconGrid = document.getElementById("iconGrid");
+const iconCount = document.getElementById("iconCount");
+const catalogStatus = document.getElementById("catalogStatus");
+const insertIconButton = document.getElementById("insertIcon");
 
-/*
- * Inserts text at the selected range, or at the caret when
- * no text is selected. Restores focus and the caret position.
- */
+let iconCatalogue = [];
+let activeVariant = "both";
+let selectedIconName = "";
+
 function insertAtCursor(text) {
     const start = input.selectionStart ?? input.value.length;
     const end = input.selectionEnd ?? start;
-
     input.setRangeText(text, start, end, "end");
     input.focus();
     update();
 }
-
-/*
- * Escapes plain text before it is placed inside HTML/RichText.
- */
 function escapeHTML(text) {
-    return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+    return text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 }
 
-/*
- * Convert Minecraft-style formatting codes into Roblox RichText.
- * Also preserves the BuilderIcons tags inserted by this page.
- */
+/* Convert Minecraft formatting codes into Roblox RichText, preserving only BuilderIcons tags created by this tool. */
 function convertFormatting(source) {
-    let result = "";
-    let buffer = "";
-
-    const state = {
-        color: null,
-        bold: false,
-        italic: false,
-        underline: false,
-        strike: false
-    };
-
+    let result = "", buffer = "";
+    const state = {color:null,bold:false,italic:false,underline:false,strike:false};
     function flush() {
         if (!buffer) return;
-
         let segment = escapeHTML(buffer);
         buffer = "";
-
-        if (state.color) {
-            segment = `<font color="${state.color}">${segment}</font>`;
-        }
-
+        if (state.color) segment = `<font color="${state.color}">${segment}</font>`;
         if (state.strike) segment = `<s>${segment}</s>`;
         if (state.underline) segment = `<u>${segment}</u>`;
         if (state.italic) segment = `<i>${segment}</i>`;
         if (state.bold) segment = `<b>${segment}</b>`;
-
         result += segment;
     }
-
     function resetStyles() {
-        state.color = null;
-        state.bold = false;
-        state.italic = false;
-        state.underline = false;
-        state.strike = false;
+        state.color = null; state.bold = false; state.italic = false; state.underline = false; state.strike = false;
     }
-
     let i = 0;
-
     while (i < source.length) {
-        /*
-         * Preserve a BuilderIcons tag generated by this page.
-         * Only the exact expected family URI is recognized.
-         */
         const remaining = source.slice(i);
-        const iconMatch = remaining.match(
-            /^<font family="rbxasset:\/\/LuaPackages\/Packages\/_Index\/BuilderIcons\/BuilderIcons\/BuilderIcons\.json">(?:<b>)?[a-z0-9-]+(?:<\/b>)?<\/font>/i
-        );
-
+        const family = 'rbxasset:\\/\\/LuaPackages\\/Packages\\/_Index\\/BuilderIcons\\/BuilderIcons\\/BuilderIcons\\.json';
+        const iconPattern = new RegExp('^(?:<b>)?<font family="' + family + '">[a-z0-9_-]+<\\/font>(?:<\\/b>)?','i');
+        const iconMatch = remaining.match(iconPattern);
         if (iconMatch) {
             flush();
-            result += iconMatch[0];
-            i += iconMatch[0].length;
+            const tag = iconMatch[0];
+            // Normalize filled output to bold outside the font tag.
+            const nameMatch = tag.match(/>([a-z0-9_-]+)<\/font>/i);
+            if (nameMatch) {
+                const name = nameMatch[1];
+                const isBold = tag.startsWith("<b>");
+                result += isBold ? `<b><font family="${BUILDER_ICONS}">${name}</font></b>` : `<font family="${BUILDER_ICONS}">${name}</font>`;
+            } else result += escapeHTML(tag);
+            i += tag.length;
             continue;
         }
-
         if (source[i] === "§" && i + 1 < source.length) {
-            const code = source[i + 1].toLowerCase();
-
-            if (Object.prototype.hasOwnProperty.call(COLORS, code)) {
-                flush();
-                state.color = COLORS[code];
-
-                // Minecraft color codes clear previous style modifiers.
-                state.bold = false;
-                state.italic = false;
-                state.underline = false;
-                state.strike = false;
-
-                i += 2;
-                continue;
+            const code = source[i+1].toLowerCase();
+            if (Object.prototype.hasOwnProperty.call(COLORS,code)) {
+                flush(); state.color = COLORS[code];
+                state.bold = false; state.italic = false; state.underline = false; state.strike = false;
+                i += 2; continue;
             }
-
             if ("lonomkkr".includes(code)) {
                 flush();
-
-                switch (code) {
-                    case "l":
-                        state.bold = true;
-                        break;
-                    case "o":
-                        state.italic = true;
-                        break;
-                    case "n":
-                        state.underline = true;
-                        break;
-                    case "m":
-                        state.strike = true;
-                        break;
-                    case "r":
-                        resetStyles();
-                        break;
-                    case "k":
-                        // Roblox RichText has no Minecraft-style
-                        // obfuscated/random-character formatting.
-                        break;
+                switch(code) {
+                    case "l": state.bold = true; break;
+                    case "o": state.italic = true; break;
+                    case "n": state.underline = true; break;
+                    case "m": state.strike = true; break;
+                    case "r": resetStyles(); break;
+                    case "k": break; // Roblox RichText has no obfuscated-text equivalent.
                 }
-
-                i += 2;
-                continue;
+                i += 2; continue;
             }
         }
-
-        buffer += source[i];
-        i++;
+        buffer += source[i++];
     }
-
     flush();
     return result;
 }
-
-/*
- * Convert Minecraft codes and apply the selected Roblox font
- * to the entire generated RichText string.
- */
-function toRichText(source, fontFace) {
+function toRichText(source,fontFace) {
     let result = convertFormatting(source);
-
-    if (fontFace) {
-        result = `<font face="${fontFace}">${result}</font>`;
-    }
-
+    if (fontFace) result = `<font face="${fontFace}">${result}</font>`;
     return result;
 }
-
 function update() {
-    const source = input.value;
-    const fontFace = fontSelect.value;
-    const richText = toRichText(source, fontFace);
-
-    preview.style.fontFamily =
-        PREVIEW_FONTS[fontFace] || "monospace";
-
-    // Generated strings contain escaped text and recognized icon markup.
+    const richText = toRichText(input.value,fontSelect.value);
+    preview.style.fontFamily = PREVIEW_FONTS[fontSelect.value] || "monospace";
     preview.innerHTML = richText;
-
-    // Show the exact RichText markup to copy into Roblox Studio.
     output.textContent = richText;
 }
 
-function insertBuilderIcon() {
-    const typedName = iconSearch.value.trim();
-    const name = typedName || iconSelect.value;
-
-    if (!/^[a-z0-9-]+$/i.test(name)) {
-        status.textContent = "Please enter a valid icon name.";
+/* The ligature names in the font tables are the source of truth for the exact icon catalogue. */
+function extractLigatures(font) {
+    const ligatures = {};
+    const gsub = font.tables.gsub;
+    if (!gsub) return ligatures;
+    for (let f=0; f<gsub.features.length; f++) {
+        if (gsub.features[f].tag !== "liga") continue;
+        const lookupIndexes = gsub.features[f].feature.lookupListIndexes;
+        for (let li=0; li<lookupIndexes.length; li++) {
+            const lookup = gsub.lookups[lookupIndexes[li]];
+            if (!lookup) continue;
+            for (let s=0; s<lookup.subtables.length; s++) {
+                const subtable = lookup.subtables[s];
+                if (!subtable.ligatureSets) continue;
+                for (let i=0; i<subtable.ligatureSets.length; i++) {
+                    const coverageGlyphId = subtable.coverage.glyphs
+                        ? subtable.coverage.glyphs[i]
+                        : subtable.coverage.ranges ? getCoverageGlyphId(subtable.coverage.ranges,i) : null;
+                    if (coverageGlyphId == null) continue;
+                    const firstGlyph = font.glyphs.get(coverageGlyphId);
+                    if (!firstGlyph || firstGlyph.unicode == null) continue;
+                    const firstChar = String.fromCharCode(firstGlyph.unicode);
+                    for (let j=0; j<subtable.ligatureSets[i].length; j++) {
+                        const lig = subtable.ligatureSets[i][j];
+                        const chars = [];
+                        for (let k=0; k<lig.components.length; k++) {
+                            const glyph = font.glyphs.get(lig.components[k]);
+                            chars.push(glyph && glyph.unicode != null ? String.fromCharCode(glyph.unicode) : "");
+                        }
+                        const name = firstChar + chars.join("");
+                        const ligGlyph = font.glyphs.get(lig.ligGlyph);
+                        if (ligGlyph && ligGlyph.unicode) ligatures[name] = "0x" + ligGlyph.unicode.toString(16);
+                    }
+                }
+            }
+        }
+    }
+    return ligatures;
+}
+function getCoverageGlyphId(ranges,index) {
+    let count = 0;
+    for (let i=0; i<ranges.length; i++) {
+        const rangeSize = ranges[i].end - ranges[i].start + 1;
+        if (index < count + rangeSize) return ranges[i].start + (index-count);
+        count += rangeSize;
+    }
+    return null;
+}
+function extractCmapIcons(font) {
+    const icons = {};
+    for (let cp=0xf100; cp<=0xf400; cp++) {
+        const glyph = font.charToGlyph(String.fromCodePoint(cp));
+        if (glyph && glyph.index !== 0 && glyph.name) icons[glyph.name] = "0x" + cp.toString(16);
+    }
+    return icons;
+}
+function guessCategory(name) {
+    for (const item of PATTERNS) if (item.pattern.test(name)) return item.category;
+    return "Other";
+}
+function showCatalogError(message) {
+    catalogStatus.textContent = "Could not load the complete BuilderIcons catalogue: " + message +
+        " Check your internet connection or open this HTML through a browser that allows requests to raw.githubusercontent.com.";
+    iconCount.textContent = "Catalogue unavailable";
+}
+function escapeAttribute(value) {
+    return String(value).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function refreshCategoryOptions() {
+    categorySelect.innerHTML = '<option value="all">All categories</option>';
+    CATEGORY_ORDER.forEach(category => {
+        const count = iconCatalogue.filter(icon => icon.category === category).length;
+        if (!count) return;
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = `${category} (${count})`;
+        categorySelect.appendChild(option);
+    });
+}
+function visibleIcons() {
+    const query = iconSearch.value.trim().toLowerCase();
+    return iconCatalogue.filter(icon => {
+        const variantOk = activeVariant === "both" || (activeVariant === "reg" ? !!icon.reg : !!icon.fill);
+        const categoryOk = categorySelect.value === "all" || icon.category === categorySelect.value;
+        return variantOk && categoryOk && (!query || icon.name.toLowerCase().includes(query));
+    });
+}
+function selectIcon(name) {
+    selectedIconName = name;
+    iconSelect.value = name;
+    iconGrid.querySelectorAll(".icon-card").forEach(card => card.classList.toggle("selected",card.dataset.name === name));
+}
+function renderIconCatalogue() {
+    const filtered = visibleIcons();
+    iconCount.textContent = `${filtered.length} shown · ${iconCatalogue.length} unique icon names`;
+    iconSelect.innerHTML = "";
+    if (!filtered.length) {
+        const option = document.createElement("option");
+        option.value = ""; option.textContent = "No matching icons";
+        iconSelect.appendChild(option);
+        iconGrid.innerHTML = "";
+        catalogStatus.textContent = "No icons match this search/filter.";
+        insertIconButton.disabled = true;
         return;
     }
-
-    const filled = iconFilled.checked;
-
-    const iconTag =
-        `<font family="${BUILDER_ICONS}">` +
-        (filled ? `<b>${name}</b>` : name) +
-        `</font>`;
-
-    insertAtCursor(iconTag);
-
-    status.textContent =
-        `Inserted BuilderIcon: ${name}${filled ? " (filled)" : ""}.`;
-}
-
-/*
- * Keep the picker in sync with the search field.
- * Matching is case-insensitive and searches the available examples.
- */
-iconSearch.addEventListener("input", () => {
-    const query = iconSearch.value.trim().toLowerCase();
-
-    if (!query) return;
-
-    const match = Array.from(iconSelect.options).find(option =>
-        option.value.toLowerCase().includes(query)
-    );
-
-    if (match) {
-        iconSelect.value = match.value;
-    }
-});
-
-/*
- * All formatting buttons insert at the caret, replacing
- * selected text if a selection exists.
- */
-document.querySelectorAll("[data-code]").forEach(button => {
-    button.addEventListener("click", () => {
-        insertAtCursor(button.dataset.code);
+    filtered.forEach(icon => {
+        const option = document.createElement("option");
+        option.value = icon.name;
+        option.textContent = icon.name;
+        iconSelect.appendChild(option);
     });
-});
-
-fontSelect.addEventListener("change", update);
-input.addEventListener("input", update);
-
-document.getElementById("insertIcon").addEventListener(
-    "click",
-    insertBuilderIcon
-);
-
-document.getElementById("copyOutput").addEventListener("click", async () => {
+    if (!filtered.some(icon => icon.name === selectedIconName)) selectedIconName = filtered[0].name;
+    iconSelect.value = selectedIconName;
+    insertIconButton.disabled = false;
+    catalogStatus.textContent = "Catalogue loaded from the Regular and Filled font files. Select an icon card or use the dropdown.";
+    iconGrid.innerHTML = filtered.map(icon => {
+        const variants = [icon.reg ? "Regular" : "", icon.fill ? "Filled" : ""].filter(Boolean).join(" + ");
+        const glyphPreview = icon.name;
+        return `<button type="button" class="icon-card${icon.name === selectedIconName ? " selected" : ""}" data-name="${escapeAttribute(icon.name)}" title="Select ${escapeAttribute(icon.name)}">
+            <div class="name">${escapeAttribute(icon.name)}</div>
+            <div class="glyph">${escapeAttribute(glyphPreview)}</div>
+            <div class="variants">${variants}</div>
+        </button>`;
+    }).join("");
+    iconGrid.querySelectorAll(".icon-card").forEach(card => {
+        card.addEventListener("click",() => {
+            selectIcon(card.dataset.name);
+            iconSelect.value = card.dataset.name;
+        });
+        card.addEventListener("dblclick",() => {
+            selectIcon(card.dataset.name);
+            insertBuilderIcon();
+        });
+    });
+}
+async function initIconCatalogue() {
+    try {
+        if (!window.opentype || typeof window.opentype.parse !== "function") throw new Error("opentype.js did not load.");
+        const responses = await Promise.all([fetch(FONT_URLS.reg),fetch(FONT_URLS.fill)]);
+        if (!responses[0].ok || !responses[1].ok) throw new Error("One or both BuilderIcons font downloads failed (HTTP " + responses.map(r=>r.status).join(", ") + ").");
+        const buffers = await Promise.all([responses[0].arrayBuffer(),responses[1].arrayBuffer()]);
+        const regFont = window.opentype.parse(buffers[0]);
+        const fillFont = window.opentype.parse(buffers[1]);
+        const regIcons = Object.assign({},extractCmapIcons(regFont),extractLigatures(regFont));
+        const fillIcons = Object.assign({},extractCmapIcons(fillFont),extractLigatures(fillFont));
+        const allNames = new Set([...Object.keys(regIcons),...Object.keys(fillIcons)]);
+        iconCatalogue = Array.from(allNames).sort((a,b)=>a.localeCompare(b)).map(name => ({
+            name, reg:regIcons[name] || null, fill:fillIcons[name] || null, category:guessCategory(name)
+        }));
+        refreshCategoryOptions();
+        if (iconCatalogue.length) selectedIconName = iconCatalogue[0].name;
+        renderIconCatalogue();
+        document.getElementById("variantToggle").querySelectorAll("button").forEach(button => {
+            button.addEventListener("click",() => {
+                document.querySelectorAll("#variantToggle button").forEach(b=>b.classList.toggle("active",b===button));
+                activeVariant = button.dataset.variant;
+                renderIconCatalogue();
+            });
+        });
+    } catch (error) {
+        showCatalogError(error && error.message ? error.message : String(error));
+    }
+}
+function insertBuilderIcon() {
+    const name = (iconSearch.value.trim() && iconSelect.value === "" ? iconSearch.value.trim() : iconSelect.value) || selectedIconName;
+    if (!name || !iconCatalogue.some(icon => icon.name === name)) {
+        status.textContent = "Choose an icon from the loaded catalogue first.";
+        return;
+    }
+    const icon = iconCatalogue.find(item => item.name === name);
+    const filled = iconFilled.checked;
+    if (filled && !icon.fill) {
+        status.textContent = `${name} has no Filled variant; turn off Filled or choose an icon with a Filled variant.`;
+        return;
+    }
+    if (!filled && !icon.reg && icon.fill) {
+        status.textContent = `${name} has no Regular variant. Enable Filled to insert it.`;
+        return;
+    }
+    const iconTag = `<font family="${BUILDER_ICONS}">${name}</font>`;
+    insertAtCursor(filled ? `<b>${iconTag}</b>` : iconTag);
+    status.textContent = `Inserted BuilderIcon: ${name}${filled ? " (filled)" : " (regular)"}.`;
+}
+document.querySelectorAll("[data-code]").forEach(button => button.addEventListener("click",() => insertAtCursor(button.dataset.code)));
+fontSelect.addEventListener("change",update);
+input.addEventListener("input",update);
+iconSearch.addEventListener("input",renderIconCatalogue);
+categorySelect.addEventListener("change",renderIconCatalogue);
+iconSelect.addEventListener("change",() => selectIcon(iconSelect.value));
+insertIconButton.addEventListener("click",insertBuilderIcon);
+document.getElementById("copyOutput").addEventListener("click",async () => {
     try {
         await navigator.clipboard.writeText(output.textContent);
         status.textContent = "RichText copied to clipboard.";
     } catch {
-        // Fallback for browsers that disallow clipboard access.
         const range = document.createRange();
         range.selectNodeContents(output);
-
         const selection = window.getSelection();
         selection.removeAllRanges();
         selection.addRange(range);
-
-        status.textContent =
-            "Select and copy the highlighted RichText manually.";
+        status.textContent = "Select and copy the highlighted RichText manually.";
     }
 });
-
 update();
+initIconCatalogue();
 </script>
 </body>
 </html>
