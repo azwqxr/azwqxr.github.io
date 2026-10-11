@@ -1,259 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:title" content="azwqxrs hideout - richtext generator">
-<meta property="og:description" content="richtext generator for build logic and minecraft">
-<meta property="og:image" content="https://azwqxr.github.io/images/screensaver.png">
-      <meta name="theme-color" content="#28a745">
 <meta charset="UTF-8">
-<title>BL richtext generator: remade</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>build logic richtext generator</title>
 
 <style>
+:root {
+    color-scheme: dark;
+    --background: #0b0b0b;
+    --panel: #151515;
+    --field: #101010;
+    --border: #303030;
+    --text: #eeeeee;
+    --muted: #999999;
+    --accent: #ffa200;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    background: #0b0b0b;
+    background: var(--background);
+    color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
-    color: #eaeaea;
 }
 
 .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    width: min(920px, 100%);
+    margin: 0 auto;
+    padding: 28px 20px 48px;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: clamp(23px, 4vw, 30px);
+    margin: 10px 0 28px;
 }
 
-.toolbar {
+h2 {
+    font-size: 16px;
+    margin: 0 0 12px;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+.toolbar,
+.builder-icons {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
-    background: #151515;
     padding: 12px;
+    background: var(--panel);
+    border: 1px solid #242424;
     border-radius: 8px;
 }
 
 .color {
-    width: 22px;
-    height: 22px;
-    border-radius: 4px;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    border: 1px solid #555;
+    border-radius: 5px;
     cursor: pointer;
-    border: 1px solid #000;
+    transition: transform .12s, border-color .12s;
+}
+
+.color:hover {
+    transform: scale(1.12);
+    border-color: white;
+}
+
+.color:focus-visible,
+.btn:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 .btn {
-    background: #1f1f1f;
-    color: #fff;
-    border: 1px solid #333;
-    padding: 6px 10px;
+    padding: 8px 11px;
+    background: #222;
+    color: white;
+    border: 1px solid #393939;
     border-radius: 6px;
     cursor: pointer;
     font-size: 13px;
 }
 
 .btn:hover {
-    background: #2a2a2a;
+    background: #333;
+}
+
+.btn.primary {
+    background: #8b5700;
+    border-color: #c78313;
+}
+
+.btn.primary:hover {
+    background: #a36a00;
 }
 
 label {
     display: block;
-    margin: 16px 0 6px;
+    margin-bottom: 7px;
+    font-size: 13px;
     font-weight: 600;
 }
 
-textarea, select, .box {
+textarea,
+select,
+input[type="text"] {
     width: 100%;
-    background: #121212;
-    color: #fff;
-    border: 1px solid #2a2a2a;
+    padding: 11px;
+    background: var(--field);
+    color: white;
+    border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 10px;
-    font-size: 14px;
-    box-sizing: border-box;
+    font: 14px Arial, sans-serif;
 }
 
 textarea {
-    min-height: 90px;
+    min-height: 110px;
     resize: vertical;
+    line-height: 1.6;
+}
+
+select {
+    cursor: pointer;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 7px;
+}
+
+.builder-icons .search {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+.builder-icons .icon-picker {
+    flex: 1 1 180px;
+    min-width: 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.checkbox-label input {
+    accent-color: var(--accent);
 }
 
 .preview {
-    min-height: 60px;
-    font-family: monospace;
+    min-height: 75px;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+.box {
+    padding: 14px;
+    background: var(--field);
+    border: 1px solid var(--border);
+    border-radius: 6px;
 }
 
 .output {
+    min-height: 95px;
     white-space: pre-wrap;
-    word-break: break-all;
-    font-family: monospace;
+    overflow-wrap: anywhere;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    user-select: text;
+}
+
+.row-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.status {
+    min-height: 18px;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+@media (max-width: 520px) {
+    .container {
+        padding: 18px 12px 32px;
+    }
+
+    .toolbar {
+        gap: 7px;
+    }
+
+    .btn {
+        padding: 8px;
+    }
 }
 </style>
 </head>
 
 <body>
-<div class="container">
-    <h1>build logic richtext generator: remade</h1>
+<main class="container">
 
-    <div class="toolbar">
-        <div class="color" style="background:#000000" onclick="addCode('§0')"></div>
-        <div class="color" style="background:#0000AA" onclick="addCode('§1')"></div>
-        <div class="color" style="background:#00AA00" onclick="addCode('§2')"></div>
-        <div class="color" style="background:#00AAAA" onclick="addCode('§3')"></div>
-        <div class="color" style="background:#AA0000" onclick="addCode('§4')"></div>
-        <div class="color" style="background:#AA00AA" onclick="addCode('§5')"></div>
-        <div class="color" style="background:#FFAA00" onclick="addCode('§6')"></div>
-        <div class="color" style="background:#AAAAAA" onclick="addCode('§7')"></div>
-        <div class="color" style="background:#555555" onclick="addCode('§8')"></div>
-        <div class="color" style="background:#5555FF" onclick="addCode('§9')"></div>
-        <div class="color" style="background:#55FF55" onclick="addCode('§a')"></div>
-        <div class="color" style="background:#55FFFF" onclick="addCode('§b')"></div>
-        <div class="color" style="background:#FF5555" onclick="addCode('§c')"></div>
-        <div class="color" style="background:#FF55FF" onclick="addCode('§d')"></div>
-        <div class="color" style="background:#FFFF55" onclick="addCode('§e')"></div>
-        <div class="color" style="background:#FFFFFF" onclick="addCode('§f')"></div>
+    <h1>build logic richtext generator</h1>
+      <h1>--- V2 ---</h1>
 
-        <button class="btn" onclick="addCode('§l')">Bold</button>
-        <button class="btn" onclick="addCode('§n')">Underline</button>
-        <button class="btn" onclick="addCode('§o')">Italic</button>
-        <button class="btn" onclick="addCode('§m')">Strike</button>
-        <button class="btn" onclick="addCode('§k')">Obfuscated</button>
-        <button class="btn" onclick="addCode('§r')">Reset</button>
-    </div>
+    <section class="section">
+        <h2>Formatting</h2>
+        <div class="toolbar" id="colorToolbar">
+            <button class="color" style="background:#000000" data-code="§0" title="Black"></button>
+            <button class="color" style="background:#0000AA" data-code="§1" title="Dark Blue"></button>
+            <button class="color" style="background:#00AA00" data-code="§2" title="Dark Green"></button>
+            <button class="color" style="background:#00AAAA" data-code="§3" title="Dark Aqua"></button>
+            <button class="color" style="background:#AA0000" data-code="§4" title="Dark Red"></button>
+            <button class="color" style="background:#AA00AA" data-code="§5" title="Dark Purple"></button>
+            <button class="color" style="background:#FFAA00" data-code="§6" title="Gold"></button>
+            <button class="color" style="background:#AAAAAA" data-code="§7" title="Gray"></button>
+            <button class="color" style="background:#555555" data-code="§8" title="Dark Gray"></button>
+            <button class="color" style="background:#5555FF" data-code="§9" title="Blue"></button>
+            <button class="color" style="background:#55FF55" data-code="§a" title="Green"></button>
+            <button class="color" style="background:#55FFFF" data-code="§b" title="Aqua"></button>
+            <button class="color" style="background:#FF5555" data-code="§c" title="Red"></button>
+            <button class="color" style="background:#FF55FF" data-code="§d" title="Light Purple"></button>
+            <button class="color" style="background:#FFFF55" data-code="§e" title="Yellow"></button>
+            <button class="color" style="background:#FFFFFF" data-code="§f" title="White"></button>
 
-    <label>minecraft formatting:</label>
-    <textarea id="input">§6start §etyping</textarea>
+            <button class="btn" data-code="§l">Bold</button>
+            <button class="btn" data-code="§n">Underline</button>
+            <button class="btn" data-code="§o">Italic</button>
+            <button class="btn" data-code="§m">Strike</button>
+            <button class="btn" data-code="§k">Obfuscated</button>
+            <button class="btn" data-code="§r">Reset</button>
+        </div>
+        <p class="hint">Select text or position the cursor, then click a color or formatting button to insert its code.</p>
+    </section>
 
-    <label>fonts:</label>
-    <select id="fontSelect">
-        <option value="">Default</option>
-        <option value="Legacy">Legacy</option>
-        <option value="Arial">Arial</option>
-        <option value="ArialBold">ArialBold</option>
-        <option value="SourceSans">SourceSans</option>
-        <option value="SourceSansBold">SourceSansBold</option>
-        <option value="Gotham">Gotham</option>
-        <option value="GothamBold">GothamBold</option>
-        <option value="GothamBlack">GothamBlack</option>
-        <option value="Cartoon">Cartoon</option>
-        <option value="Code">Code</option>
-        <option value="SciFi">SciFi</option>
-        <option value="Arcade">Arcade</option>
-    </select>
+    <section class="section">
+        <label for="input">Minecraft formatting:</label>
+        <textarea id="input" spellcheck="false">§4hello §2world §r!</textarea>
+        <p class="hint">Use Minecraft-style § codes. Formatting is converted into Roblox RichText tags in the output.</p>
+    </section>
 
-    <label>preview:</label>
-    <div id="preview" class="box preview"></div>
+    <section class="section">
+        <label for="fontSelect">Other options — Roblox Studio font:</label>
+        <select id="fontSelect">
+            <option value="">Default</option>
+            <option value="Legacy">Legacy</option>
+            <option value="Arial">Arial</option>
+            <option value="ArialBold">ArialBold</option>
+            <option value="SourceSans">SourceSans</option>
+            <option value="SourceSansBold">SourceSansBold</option>
+            <option value="SourceSansLight">SourceSansLight</option>
+            <option value="SourceSansItalic">SourceSansItalic</option>
+            <option value="SourceSansSemibold">SourceSansSemibold</option>
+            <option value="Gotham">Gotham</option>
+            <option value="GothamMedium">GothamMedium</option>
+            <option value="GothamSemibold">GothamSemibold</option>
+            <option value="GothamBold">GothamBold</option>
+            <option value="GothamBlack">GothamBlack</option>
+            <option value="Cartoon">Cartoon</option>
+            <option value="Code">Code</option>
+            <option value="Highway">Highway</option>
+            <option value="SciFi">SciFi</option>
+            <option value="Arcade">Arcade</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Antique">Antique</option>
+            <option value="Bodoni">Bodoni</option>
+            <option value="Garamond">Garamond</option>
+        </select>
+        <p class="hint">The selected font is added to the generated RichText and applied to the whole preview.</p>
+    </section>
 
-    <label>output (paste into /richtext):</label>
-    <div id="output" class="box output"></div>
+    <section class="section">
+        <h2>BuilderIcons</h2>
 
-    </div>
-    
-        </footer>
-    <a href="https://azwqxr.github.io/tools/BLsuite" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
-    return to BL tools suite
-</a>
+        <div class="builder-icons">
+            <input
+                class="search"
+                type="text"
+                id="iconSearch"
+                placeholder="Search icon names..."
+                autocomplete="off"
+            >
 
-    <a href="https://azwqxr.github.io" target="_blank" style="padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">
-    go home
-</a>
+            <select class="icon-picker" id="iconSelect" aria-label="Select BuilderIcon">
+                <option value="studio">studio</option>
+                <option value="roblox">roblox</option>
+                <option value="robux">robux</option>
+                <option value="roblox-plus">roblox-plus</option>
+                <option value="verified-mono">verified-mono</option>
+                <option value="github">github</option>
+                <option value="youtube">youtube</option>
+                <option value="twitch">twitch</option>
+                <option value="twitter">twitter</option>
+                <option value="messenger">messenger</option>
+                <option value="house">house</option>
+                <option value="settings">settings</option>
+                <option value="search">search</option>
+                <option value="bell">bell</option>
+                <option value="gear">gear</option>
+                <option value="friends">friends</option>
+                <option value="backpack">backpack</option>
+                <option value="cloud">cloud</option>
+                <option value="discord">discord</option>
+                <option value="code">code</option>
+                <option value="mouse-button-left">mouse-button-left</option>
+                <option value="square-face-winking">square-face-winking</option>
+                <option value="premium">premium</option>
+                <option value="diamond">diamond</option>
+                <option value="roblox-plus">roblox-plus</option>
+                <option value="nebula">nebula</option>
+            </select>
 
-      </footer>
-    
+            <label class="checkbox-label">
+                <input type="checkbox" id="iconFilled">
+                Filled
+            </label>
+
+            <button class="btn primary" type="button" id="insertIcon">
+                Insert Icon
+            </button>
+        </div>
+
+        <p class="hint">
+            Choose an icon name, then insert it at the text cursor.
+            Enable Filled to use the bold BuilderIcons variant.
+            The icon names here are examples, not a complete icon catalogue.
+        </p>
+    </section>
+
+    <section class="section">
+        <label>Preview:</label>
+        <div id="preview" class="box preview"></div>
+        <p class="hint">BuilderIcons are Roblox-specific fonts and may appear as ordinary text in your browser preview.</p>
+    </section>
+
+    <section class="section">
+        <label>Output — Roblox RichText:</label>
+        <div id="output" class="box output"></div>
+        <div class="row-actions">
+            <button class="btn" id="copyOutput">Copy RichText</button>
+        </div>
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+    </section>
+
+</main>
+
 <script>
-const colors = {
-    0:"#000000",1:"#0000AA",2:"#00AA00",3:"#00AAAA",
-    4:"#AA0000",5:"#AA00AA",6:"#FFAA00",7:"#AAAAAA",
-    8:"#555555",9:"#5555FF",a:"#55FF55",b:"#55FFFF",
-    c:"#FF5555",d:"#FF55FF",e:"#FFFF55",f:"#FFFFFF"
+"use strict";
+
+const BUILDER_ICONS =
+    "rbxasset://LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/BuilderIcons.json";
+
+const COLORS = {
+    "0": "#000000",
+    "1": "#0000AA",
+    "2": "#00AA00",
+    "3": "#00AAAA",
+    "4": "#AA0000",
+    "5": "#AA00AA",
+    "6": "#FFAA00",
+    "7": "#AAAAAA",
+    "8": "#555555",
+    "9": "#5555FF",
+    "a": "#55FF55",
+    "b": "#55FFFF",
+    "c": "#FF5555",
+    "d": "#FF55FF",
+    "e": "#FFFF55",
+    "f": "#FFFFFF"
 };
 
-const robloxFonts = {
+const PREVIEW_FONTS = {
     Legacy: "Arial, sans-serif",
     Arial: "Arial, sans-serif",
     ArialBold: "Arial Black, Arial, sans-serif",
     SourceSans: "Arial, sans-serif",
     SourceSansBold: "Arial, sans-serif",
-    Gotham: "Helvetica, Arial, sans-serif",
-    GothamBold: "Helvetica, Arial, sans-serif",
+    SourceSansLight: "Arial, sans-serif",
+    SourceSansItalic: "Arial, sans-serif",
+    SourceSansSemibold: "Arial, sans-serif",
+    Gotham: "Arial, sans-serif",
+    GothamMedium: "Arial, sans-serif",
+    GothamSemibold: "Arial, sans-serif",
+    GothamBold: "Arial, sans-serif",
     GothamBlack: "Arial Black, sans-serif",
-    Cartoon: "Comic Sans MS, cursive",
-    Code: "Courier New, monospace",
-    SciFi: "Orbitron, Arial, sans-serif",
-    Arcade: "Press Start 2P, monospace"
+    Cartoon: "'Comic Sans MS', cursive",
+    Code: "'Courier New', monospace",
+    Highway: "'Arial Narrow', Arial, sans-serif",
+    SciFi: "Arial, sans-serif",
+    Arcade: "'Courier New', monospace",
+    Fantasy: "Papyrus, fantasy",
+    Antique: "Georgia, serif",
+    Bodoni: "Bodoni, Georgia, serif",
+    Garamond: "Garamond, Georgia, serif"
 };
 
-function addCode(code) {
-    const input = document.getElementById("input");
-    const start = input.selectionStart;
-    const end = input.selectionEnd;
+const input = document.getElementById("input");
+const fontSelect = document.getElementById("fontSelect");
+const preview = document.getElementById("preview");
+const output = document.getElementById("output");
+const status = document.getElementById("status");
+const iconSearch = document.getElementById("iconSearch");
+const iconSelect = document.getElementById("iconSelect");
+const iconFilled = document.getElementById("iconFilled");
 
-    input.value =
-        input.value.slice(0, start) +
-        code +
-        input.value.slice(end);
+/*
+ * Inserts text at the selected range, or at the caret when
+ * no text is selected. Restores focus and the caret position.
+ */
+function insertAtCursor(text) {
+    const start = input.selectionStart ?? input.value.length;
+    const end = input.selectionEnd ?? start;
 
-    input.selectionStart = input.selectionEnd = start + code.length;
+    input.setRangeText(text, start, end, "end");
     input.focus();
     update();
 }
 
-function render(text) {
-    let html = "<span>";
-    let color = "#FFFFFF";
-
-    for (let i = 0; i < text.length; i++) {
-        if (text[i] === "§" && colors[text[i+1]]) {
-            color = colors[text[i+1]];
-            i++;
-            html += `</span><span style="color:${color}">`;
-        } else {
-            html += text[i];
-        }
-    }
-    return html + "</span>";
+/*
+ * Escapes plain text before it is placed inside HTML/RichText.
+ */
+function escapeHTML(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
 }
 
-function toRichText(text, fontFace) {
-    let out = "";
-    let currentColor = null;
+/*
+ * Convert Minecraft-style formatting codes into Roblox RichText.
+ * Also preserves the BuilderIcons tags inserted by this page.
+ */
+function convertFormatting(source) {
+    let result = "";
+    let buffer = "";
 
-    for (let i = 0; i < text.length; i++) {
-        if (text[i] === "§" && colors[text[i+1]]) {
-            if (currentColor) out += "</font>";
-            currentColor = colors[text[i+1]];
-            out += `<font color="${currentColor}">`;
-            i++;
-        } else {
-            out += text[i];
+    const state = {
+        color: null,
+        bold: false,
+        italic: false,
+        underline: false,
+        strike: false
+    };
+
+    function flush() {
+        if (!buffer) return;
+
+        let segment = escapeHTML(buffer);
+        buffer = "";
+
+        if (state.color) {
+            segment = `<font color="${state.color}">${segment}</font>`;
         }
+
+        if (state.strike) segment = `<s>${segment}</s>`;
+        if (state.underline) segment = `<u>${segment}</u>`;
+        if (state.italic) segment = `<i>${segment}</i>`;
+        if (state.bold) segment = `<b>${segment}</b>`;
+
+        result += segment;
     }
 
-    if (currentColor) out += "</font>";
+    function resetStyles() {
+        state.color = null;
+        state.bold = false;
+        state.italic = false;
+        state.underline = false;
+        state.strike = false;
+    }
+
+    let i = 0;
+
+    while (i < source.length) {
+        /*
+         * Preserve a BuilderIcons tag generated by this page.
+         * Only the exact expected family URI is recognized.
+         */
+        const remaining = source.slice(i);
+        const iconMatch = remaining.match(
+            /^<font family="rbxasset:\/\/LuaPackages\/Packages\/_Index\/BuilderIcons\/BuilderIcons\/BuilderIcons\.json">(?:<b>)?[a-z0-9-]+(?:<\/b>)?<\/font>/i
+        );
+
+        if (iconMatch) {
+            flush();
+            result += iconMatch[0];
+            i += iconMatch[0].length;
+            continue;
+        }
+
+        if (source[i] === "§" && i + 1 < source.length) {
+            const code = source[i + 1].toLowerCase();
+
+            if (Object.prototype.hasOwnProperty.call(COLORS, code)) {
+                flush();
+                state.color = COLORS[code];
+
+                // Minecraft color codes clear previous style modifiers.
+                state.bold = false;
+                state.italic = false;
+                state.underline = false;
+                state.strike = false;
+
+                i += 2;
+                continue;
+            }
+
+            if ("lonomkkr".includes(code)) {
+                flush();
+
+                switch (code) {
+                    case "l":
+                        state.bold = true;
+                        break;
+                    case "o":
+                        state.italic = true;
+                        break;
+                    case "n":
+                        state.underline = true;
+                        break;
+                    case "m":
+                        state.strike = true;
+                        break;
+                    case "r":
+                        resetStyles();
+                        break;
+                    case "k":
+                        // Roblox RichText has no Minecraft-style
+                        // obfuscated/random-character formatting.
+                        break;
+                }
+
+                i += 2;
+                continue;
+            }
+        }
+
+        buffer += source[i];
+        i++;
+    }
+
+    flush();
+    return result;
+}
+
+/*
+ * Convert Minecraft codes and apply the selected Roblox font
+ * to the entire generated RichText string.
+ */
+function toRichText(source, fontFace) {
+    let result = convertFormatting(source);
 
     if (fontFace) {
-        out = `<font face="${fontFace}">` + out + `</font>`;
+        result = `<font face="${fontFace}">${result}</font>`;
     }
 
-    return out;
+    return result;
 }
 
 function update() {
-    const text = input.value;
-    const fontKey = fontSelect.value;
-    const previewFont = robloxFonts[fontKey] || "monospace";
+    const source = input.value;
+    const fontFace = fontSelect.value;
+    const richText = toRichText(source, fontFace);
 
-    preview.style.fontFamily = previewFont;
-    output.style.fontFamily = previewFont;
+    preview.style.fontFamily =
+        PREVIEW_FONTS[fontFace] || "monospace";
 
-    preview.innerHTML = render(text);
-    output.textContent = toRichText(text, fontKey);
+    // Generated strings contain escaped text and recognized icon markup.
+    preview.innerHTML = richText;
+
+    // Show the exact RichText markup to copy into Roblox Studio.
+    output.textContent = richText;
 }
 
-input.addEventListener("input", update);
+function insertBuilderIcon() {
+    const typedName = iconSearch.value.trim();
+    const name = typedName || iconSelect.value;
+
+    if (!/^[a-z0-9-]+$/i.test(name)) {
+        status.textContent = "Please enter a valid icon name.";
+        return;
+    }
+
+    const filled = iconFilled.checked;
+
+    const iconTag =
+        `<font family="${BUILDER_ICONS}">` +
+        (filled ? `<b>${name}</b>` : name) +
+        `</font>`;
+
+    insertAtCursor(iconTag);
+
+    status.textContent =
+        `Inserted BuilderIcon: ${name}${filled ? " (filled)" : ""}.`;
+}
+
+/*
+ * Keep the picker in sync with the search field.
+ * Matching is case-insensitive and searches the available examples.
+ */
+iconSearch.addEventListener("input", () => {
+    const query = iconSearch.value.trim().toLowerCase();
+
+    if (!query) return;
+
+    const match = Array.from(iconSelect.options).find(option =>
+        option.value.toLowerCase().includes(query)
+    );
+
+    if (match) {
+        iconSelect.value = match.value;
+    }
+});
+
+/*
+ * All formatting buttons insert at the caret, replacing
+ * selected text if a selection exists.
+ */
+document.querySelectorAll("[data-code]").forEach(button => {
+    button.addEventListener("click", () => {
+        insertAtCursor(button.dataset.code);
+    });
+});
+
 fontSelect.addEventListener("change", update);
+input.addEventListener("input", update);
+
+document.getElementById("insertIcon").addEventListener(
+    "click",
+    insertBuilderIcon
+);
+
+document.getElementById("copyOutput").addEventListener("click", async () => {
+    try {
+        await navigator.clipboard.writeText(output.textContent);
+        status.textContent = "RichText copied to clipboard.";
+    } catch {
+        // Fallback for browsers that disallow clipboard access.
+        const range = document.createRange();
+        range.selectNodeContents(output);
+
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        status.textContent =
+            "Select and copy the highlighted RichText manually.";
+    }
+});
+
 update();
 </script>
 </body>
