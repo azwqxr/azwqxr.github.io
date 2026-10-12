@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Discord Webhook Messenger</title>
+  <title>DiscordLink</title>
 
   <style>
     :root {
@@ -164,10 +164,10 @@
 <body>
   <main class="container">
     <div class="brand">
-      <div class="logo">💬</div>
+      <div class="logo">DL</div>
       <div>
-        <h1>Webhook Messenger</h1>
-        <p class="subtitle">Send a message directly to Discord.</p>
+        <h1>DiscordLink™</h1>
+        <p class="subtitle">Send a message to #website-chat</p>
       </div>
     </div>
 
@@ -177,7 +177,7 @@
       <textarea
         id="message"
         maxlength="2000"
-        placeholder="Type your message here..."
+        placeholder="if you abuse i will take this down -az"
         required
       ></textarea>
 
@@ -193,7 +193,7 @@
     </form>
 
     <div class="footer">
-      Messages are sent to the configured Discord channel.
+      Messages are sent to #website-chat
     </div>
   </main>
 
@@ -229,7 +229,7 @@
 
       if (WEBHOOK_URL.startsWith("PASTE_")) {
         showStatus(
-          "Configure your webhook URL in the JavaScript first.",
+          "Configure webhook URL in the JavaScript first.",
           "error"
         );
         return;
@@ -263,7 +263,7 @@
         }
 
         showStatus(
-          "✓ Message sent successfully to Discord!",
+          "Successfully sent!",
           "success"
         );
 
@@ -272,7 +272,7 @@
       } catch (error) {
         showStatus(
           error instanceof TypeError
-            ? "Could not connect to Discord. Check your connection or browser CORS restrictions."
+            ? "Could not connect. Check your connection or browser CORS restrictions."
             : error.message,
           "error"
         );
