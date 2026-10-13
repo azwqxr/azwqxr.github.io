@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="now with buildericons!">
+<meta name="description" content="Build Logic RichText Generator with the complete BuilderIcons catalogue.">
 <title>build logic richtext generator</title>
 <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
 <style>
@@ -16,6 +16,16 @@
     --text: #eeeeee;
     --muted: #999999;
     --accent: #ffa200;
+}
+@font-face {
+    font-family: "BuilderIconsRegular";
+    src: url("https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/refs/heads/roblox/LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/Font/BuilderIcons-Regular.ttf") format("truetype");
+    font-display: block;
+}
+@font-face {
+    font-family: "BuilderIconsFilled";
+    src: url("https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/refs/heads/roblox/LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/Font/BuilderIcons-Filled.ttf") format("truetype");
+    font-display: block;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--background); color: var(--text); font-family: Arial, Helvetica, sans-serif; }
@@ -54,7 +64,19 @@ select { cursor: pointer; }
 .icon-card { min-width:0; border:1px solid var(--border); background:var(--field); border-radius:7px; padding:10px; cursor:pointer; text-align:left; color:var(--text); }
 .icon-card:hover, .icon-card.selected { border-color:var(--accent); background:#211a0e; }
 .icon-card .name { font:12px Consolas,monospace; overflow-wrap:anywhere; margin-bottom:8px; }
-.icon-card .glyph { color:var(--accent); font-size:22px; min-height:28px; }
+.icon-card .glyph {
+    display:flex; align-items:center; justify-content:center;
+    color:var(--accent); font-size:34px; min-height:54px;
+    font-family:"BuilderIconsRegular", sans-serif;
+    font-variant-ligatures:common-ligatures;
+    font-feature-settings:"liga" 1;
+    line-height:1.2; overflow:hidden;
+}
+.icon-card .glyph.filled {
+    font-family:"BuilderIconsFilled", "BuilderIconsRegular", sans-serif;
+}
+.icon-card .glyph .fallback-name { font:11px Consolas,monospace; color:var(--muted); }
+
 .icon-card .variants { color:var(--muted); font-size:10px; margin-top:5px; }
 .catalog-status { color:var(--muted); font-size:12px; padding:12px 2px; line-height:1.5; }
 hr { border:0; border-top:1px solid var(--border); margin:12px 0; }
@@ -65,7 +87,7 @@ hr { border:0; border-top:1px solid var(--border); margin:12px 0; }
 <main class="container">
     <h1>build logic richtext generator</h1>
     <h1 style="font-size:17px;margin-top:0">--- V2 ---</h1>
-        <h1 style="font-size:17px;margin-top:0">inspired by mint's original, now taken down</h1>
+    <p class="hint">azwqxr incorporated!</p>
 
     <section class="section">
         <h2>Formatting</h2>
@@ -99,7 +121,7 @@ hr { border:0; border-top:1px solid var(--border); margin:12px 0; }
     <section class="section">
         <label for="input">Minecraft formatting:</label>
         <textarea id="input" spellcheck="false">§4hello §2world §r!</textarea>
-        <p class="hint">Use § codes for Minecraft formatting. They are converted into RichText below.</p>
+        <p class="hint">Use § codes for Minecraft formatting. They are converted into Roblox RichText below.</p>
     </section>
 
     <section class="section">
@@ -141,7 +163,7 @@ hr { border:0; border-top:1px solid var(--border); margin:12px 0; }
         </div>
         <div id="catalogStatus" class="catalog-status" role="status" aria-live="polite">Downloading icon fonts and extracting exact icon names…</div>
         <div id="iconGrid" class="icon-grid"></div>
-        <p class="hint">Roblox displays BuilderIcons through its built-in font. Browser previews may show the icon name as text; the generated Roblox RichText uses the correct BuilderIcons font family. Filled uses <code>&lt;b&gt;</code> around the font tag.</p>
+        <p class="hint">Roblox displays BuilderIcons through its built-in font. The picker uses the actual BuilderIcons font files to render icon glyphs. If they do not appear, your browser may be blocking the font downloads. Filled uses <code>&lt;b&gt;</code> around the font tag.</p>
     </section>
 
     <section class="section">
@@ -417,13 +439,15 @@ function renderIconCatalogue() {
     if (!filtered.some(icon => icon.name === selectedIconName)) selectedIconName = filtered[0].name;
     iconSelect.value = selectedIconName;
     insertIconButton.disabled = false;
-    catalogStatus.textContent = "Catalogue loaded from the Regular and Filled font files. Select an icon card or use the dropdown.";
+    catalogStatus.textContent = "Catalogue loaded. Icon cards render using the actual Regular/Filled BuilderIcons fonts; click a card to select it.";
     iconGrid.innerHTML = filtered.map(icon => {
         const variants = [icon.reg ? "Regular" : "", icon.fill ? "Filled" : ""].filter(Boolean).join(" + ");
-        const glyphPreview = icon.name;
+        const useFilledPreview = iconFilled.checked && !!icon.fill;
+        const glyphClass = useFilledPreview ? "glyph filled" : "glyph";
+        const glyphFont = useFilledPreview ? "BuilderIconsFilled" : "BuilderIconsRegular";
         return `<button type="button" class="icon-card${icon.name === selectedIconName ? " selected" : ""}" data-name="${escapeAttribute(icon.name)}" title="Select ${escapeAttribute(icon.name)}">
             <div class="name">${escapeAttribute(icon.name)}</div>
-            <div class="glyph">${escapeAttribute(glyphPreview)}</div>
+            <div class="${glyphClass}" style="font-family:'${glyphFont}',sans-serif;font-variant-ligatures:common-ligatures;font-feature-settings:'liga' 1">${escapeAttribute(icon.name)}</div>
             <div class="variants">${variants}</div>
         </button>`;
     }).join("");
@@ -489,7 +513,7 @@ function insertBuilderIcon() {
 document.querySelectorAll("[data-code]").forEach(button => button.addEventListener("click",() => insertAtCursor(button.dataset.code)));
 fontSelect.addEventListener("change",update);
 input.addEventListener("input",update);
-iconSearch.addEventListener("input",renderIconCatalogue);
+iconSearch.addEventListener("input",renderIconCatalogue);\niconFilled.addEventListener("change",renderIconCatalogue);
 categorySelect.addEventListener("change",renderIconCatalogue);
 iconSelect.addEventListener("change",() => selectIcon(iconSelect.value));
 insertIconButton.addEventListener("click",insertBuilderIcon);
