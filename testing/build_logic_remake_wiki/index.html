@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10152e">
+  <title>Build Logic Remake Wiki</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/wiki.css">
+</head>
+<body>
+  <aside class="rail" aria-label="Quick navigation">
+    <a class="rail-logo" href="index.html" aria-label="Wiki home">BL</a>
+    <a href="index.html" class="rail-link active" aria-label="Home" title="Home">⌂</a>
+    <a href="components.html" class="rail-link" aria-label="Components" title="Components">▦</a>
+    <a href="mechanics.html" class="rail-link" aria-label="Mechanics" title="Mechanics">☷</a>
+    <div class="rail-spacer"></div>
+    <a href="#about" class="rail-link" aria-label="About" title="About">ⓘ</a>
+  </aside>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">BL</div>
+        <div><span class="eyebrow">COMMUNITY KNOWLEDGE BASE</span><strong>Build Logic Remake Wiki</strong></div>
+      </div>
+      <nav class="top-links" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="components.html">Components</a>
+        <a href="mechanics.html">Mechanics</a>
+      </nav>
+      <button class="mobile-menu" id="menuToggle" aria-expanded="false">☰ Menu</button>
+    </header>
+
+    <main class="layout">
+      <section class="intro">
+        <div class="breadcrumbs"><span>Wiki</span><span class="crumb-slash">/</span><span>Home</span></div>
+        <div class="intro-row">
+          <div>
+            <p class="eyebrow green">BUILD • CONNECT • CREATE</p>
+            <h1>Build Logic Remake</h1>
+            <p class="lead">A community wiki for learning the components, signals, and building techniques behind Build Logic Remake.</p>
+            <div class="intro-actions">
+              <a class="button primary" href="components.html">Explore components <span>↗</span></a>
+              <a class="button secondary" href="mechanics.html">Read mechanics</a>
+            </div>
+          </div>
+          <div class="hero-device" aria-label="Decorative logic display">
+            <div class="device-top"><span>BUILD LOGIC REMAKE</span><span class="live-dot"></span></div>
+            <div class="device-screen"><span class="signal-glyph">◉</span><span class="screen-line"></span><span class="screen-value">0101</span></div>
+            <div class="device-base"><span></span></div>
+            <div class="device-caption">SIGNAL DISPLAY <b>● ONLINE</b></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <article class="panel article-panel">
+          <section class="wiki-section" id="overview">
+            <div class="section-heading"><div><span class="section-index">01</span><h2>Welcome to the wiki</h2></div><span class="chevron">⌃</span></div>
+            <p>This site documents the parts and systems used in <strong>Build Logic Remake</strong>. Use it as a starting point for understanding how components receive inputs, process signals, and produce outputs.</p>
+            <div class="notice"><span class="notice-icon">i</span><p><strong>Community wiki</strong><br>Example values and descriptions in this starter site are placeholders. Replace them with confirmed information from your game.</p></div>
+          </section>
+
+          <section class="wiki-section" id="start">
+            <div class="section-heading"><div><span class="section-index">02</span><h2>Getting started</h2></div><span class="chevron">⌃</span></div>
+            <div class="steps">
+              <div class="step"><span>1</span><div><h3>Choose a component</h3><p>Browse the component list and learn what each part is designed to do.</p></div></div>
+              <div class="step"><span>2</span><div><h3>Place and connect</h3><p>Build a circuit or logic system by placing components and linking their inputs and outputs.</p></div></div>
+              <div class="step"><span>3</span><div><h3>Test your build</h3><p>Send signals through your setup and check whether the result matches your intended behavior.</p></div></div>
+            </div>
+          </section>
+
+          <section class="wiki-section" id="featured">
+            <div class="section-heading"><div><span class="section-index">03</span><h2>Explore the wiki</h2></div><span class="chevron">⌃</span></div>
+            <div class="feature-grid">
+              <a class="feature-card" href="components.html"><span class="feature-icon">▦</span><span class="feature-title">Components</span><span class="feature-copy">Inputs, outputs, logic parts, and displays.</span><span class="feature-arrow">↗</span></a>
+              <a class="feature-card" href="mechanics.html"><span class="feature-icon">⌘</span><span class="feature-title">Mechanics</span><span class="feature-copy">Learn about signals, connections, and behavior.</span><span class="feature-arrow">↗</span></a>
+              <a class="feature-card" href="components.html#read-output"><span class="feature-icon">▣</span><span class="feature-title">Read Output</span><span class="feature-copy">A sample component article layout.</span><span class="feature-arrow">↗</span></a>
+            </div>
+          </section>
+        </article>
+
+        <aside class="side-column">
+          <div class="side-card contents-card">
+            <h3>On this page</h3>
+            <a href="#overview">Welcome to the wiki</a>
+            <a href="#start">Getting started</a>
+            <a href="#featured">Explore the wiki</a>
+          </div>
+          <div class="side-card status-card">
+            <span class="status-icon">✦</span>
+            <h3>Help improve this wiki</h3>
+            <p>Add verified component details, screenshots, and examples as the game develops.</p>
+            <a href="components.html" class="text-link">Browse components <span>→</span></a>
+          </div>
+          <div class="side-meta"><span class="green-dot"></span> Wiki starter template <span class="meta-divider">•</span> Editable HTML/CSS</div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer" id="about">
+      <div class="footer-brand"><div class="brand-mark">BL</div><div><strong>Build Logic Remake Wiki</strong><p>Community documentation for builders and logic tinkerers.</p></div></div>
+      <div class="footer-links"><a href="index.html">Home</a><a href="components.html">Components</a><a href="mechanics.html">Mechanics</a></div>
+      <div class="footer-bottom"><span>Unofficial fan-made wiki template.</span><span>Made for Build Logic Remake</span></div>
+    </footer>
+  </div>
+  <script src="js/site.js"></script>
+</body>
+</html>

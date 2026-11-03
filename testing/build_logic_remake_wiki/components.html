@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10152e"><title>Components — Build Logic Remake Wiki</title>
+  <link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="css/wiki.css">
+</head>
+<body>
+  <aside class="rail" aria-label="Quick navigation"><a class="rail-logo" href="index.html" aria-label="Wiki home">BL</a><a href="index.html" class="rail-link" title="Home">⌂</a><a href="components.html" class="rail-link active" title="Components">▦</a><a href="mechanics.html" class="rail-link" title="Mechanics">☷</a><div class="rail-spacer"></div><a href="#about" class="rail-link" title="About">ⓘ</a></aside>
+  <div class="page-shell">
+    <header class="topbar"><a class="brand brand-home" href="index.html"><div class="brand-mark">BL</div><div><span class="eyebrow">COMMUNITY KNOWLEDGE BASE</span><strong>Build Logic Remake Wiki</strong></div></a><nav class="top-links"><a href="index.html">Home</a><a href="components.html" aria-current="page">Components</a><a href="mechanics.html">Mechanics</a></nav><button class="mobile-menu" id="menuToggle" aria-expanded="false">☰ Menu</button></header>
+    <main class="layout">
+      <div class="breadcrumbs"><a href="index.html">Wiki</a><span class="crumb-slash">/</span><span>Components</span></div>
+      <div class="page-title-row"><div><p class="eyebrow green">REFERENCE LIBRARY</p><h1>Components</h1><p class="lead">A directory of parts used to build logic systems.</p></div><div class="count-chip"><span class="green-dot"></span> Starter entries</div></div>
+      <div class="content-grid">
+        <article class="panel article-panel">
+          <section class="wiki-section"><div class="section-heading"><div><span class="section-index">01</span><h2>Component directory</h2></div></div><p>Select a component to view its overview, mechanics, and properties. These example entries can be renamed or replaced with your game's actual component data.</p>
+            <label class="search-label" for="componentSearch">Search components</label><input id="componentSearch" class="search-input" type="search" placeholder="Try “output” or “display”…">
+            <div class="component-list" id="componentList">
+              <a class="component-row" href="#read-output" data-search="read output display output signal"><span class="component-thumb output-thumb">0</span><span class="component-info"><strong>Read Output</strong><span>Displays or reads a connected output value.</span><small>OUTPUTS · EXAMPLE ENTRY</small></span><span class="row-arrow">↗</span></a>
+              <a class="component-row" href="#input-node" data-search="input node input signal source"><span class="component-thumb input-thumb">1</span><span class="component-info"><strong>Input Node</strong><span>A placeholder entry for a signal input component.</span><small>INPUTS · EXAMPLE ENTRY</small></span><span class="row-arrow">↗</span></a>
+              <a class="component-row" href="#logic-gate" data-search="logic gate and or not processing"><span class="component-thumb gate-thumb">∧</span><span class="component-info"><strong>Logic Gate</strong><span>A placeholder entry for a logic-processing component.</span><small>LOGIC · EXAMPLE ENTRY</small></span><span class="row-arrow">↗</span></a>
+            </div><p class="empty-state" id="emptyState" hidden>No components match your search.</p>
+          </section>
+          <section class="wiki-section component-article" id="read-output">
+            <div class="section-heading"><div><span class="section-index">02</span><h2>Read Output</h2></div><span class="tag">Example article</span></div>
+            <div class="article-hero"><div><p class="eyebrow green">COMPONENT PROFILE</p><h3>Read Output</h3><p>Use this section to document what the component does in Build Logic Remake.</p></div><div class="big-component output-thumb">0</div></div>
+            <h3>Overview</h3><p>Read Output is shown here as a sample component page. Replace this text with the confirmed in-game description and intended use.</p>
+            <h3>Mechanics</h3><p>Describe how the component receives input, what value it displays, and how it behaves when its input changes.</p>
+            <h3>Properties</h3><div class="property-table"><div><span>Category</span><strong>Output</strong></div><div><span>Inputs</span><strong>1 <em>(example)</em></strong></div><div><span>Outputs</span><strong>0 <em>(example)</em></strong></div><div><span>Movable</span><strong>Yes <em>(verify)</em></strong></div><div><span>Paintable</span><strong>No <em>(verify)</em></strong></div></div>
+            <div class="notice"><span class="notice-icon">!</span><p><strong>Before publishing</strong><br>Verify every property in-game; the values above are illustrative placeholders, not confirmed game data.</p></div>
+          </section>
+          <section class="wiki-section component-article" id="input-node"><div class="section-heading"><div><span class="section-index">03</span><h2>Input Node</h2></div></div><p>Document the input source, accepted values, activation method, and any limits here.</p></section>
+          <section class="wiki-section component-article" id="logic-gate"><div class="section-heading"><div><span class="section-index">04</span><h2>Logic Gate</h2></div></div><p>Document the gate's truth table, input count, output behavior, and example circuits here.</p></section>
+        </article>
+        <aside class="side-column"><div class="side-card contents-card"><h3>Contents</h3><a href="#read-output">Read Output</a><a href="#input-node">Input Node</a><a href="#logic-gate">Logic Gate</a></div><div class="side-card"><h3>Writing a component page</h3><p>Include an overview, mechanics, properties, and a clear screenshot when available.</p><a class="text-link" href="mechanics.html">Read mechanics guide →</a></div></aside>
+      </div>
+    </main>
+    <footer class="footer" id="about"><div class="footer-brand"><div class="brand-mark">BL</div><div><strong>Build Logic Remake Wiki</strong><p>Community documentation for builders and logic tinkerers.</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="components.html">Components</a><a href="mechanics.html">Mechanics</a></div><div class="footer-bottom"><span>Unofficial fan-made wiki template.</span><span>Made for Build Logic Remake</span></div></footer>
+  </div><script src="js/site.js"></script>
+</body></html>
