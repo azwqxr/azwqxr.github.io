@@ -1,11 +1,3 @@
-Build Logic Remake Wiki — starter template
+Build Logic Remake Wiki
 
-Open index.html in a browser. Pages:
-- index.html: home page
-- components.html: searchable component directory and sample component article
-- mechanics.html: mechanics and troubleshooting guide
-
-CSS is separated into css/main.css (shared theme/layout) and css/wiki.css (wiki page styles).
-The small js/site.js file handles the mobile menu and component search.
-
-Important: example component information and property values are placeholders. Verify and replace them with actual game information before publishing.
+Open index.html in a browser. Styles are in css/wiki.css and navigation behavior is in js/wiki.js. Put your logo at assets/blr-logo.png. Replace assets/image-placeholder.svg references with local article images as needed. This is a standalone static page; it does not require MediaWiki or external scripts/styles.
